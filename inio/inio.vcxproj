@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a6d7f246-380b-44c5-bbf0-a839e3ed4254}</ProjectGuid>
-    <RootNamespace>equalizehist</RootNamespace>
+    <ProjectGuid>{71f4da9e-1a66-4940-abb0-f8069cb099b2}</ProjectGuid>
+    <RootNamespace>inio</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -131,16 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="equalize_hist.cpp" />
+    <ClCompile Include="..\equalize_hist\equalize_hist.cpp" />
+    <ClCompile Include="..\grayscale\grayscale.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="equalize_hist.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\grayscale\grayscale.vcxproj">
-      <Project>{6f8e2724-61e6-4d10-8d78-c7696a6295c7}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\equalize_hist\equalize_hist.hpp" />
+    <ClInclude Include="..\grayscale\grayscale.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

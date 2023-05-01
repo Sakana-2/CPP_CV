@@ -1,5 +1,6 @@
 #include "grayscale.hpp"
-#include <iostream>
+
+//ポインタをループ変数にしたらもっと早いかも
 
 cv::Mat grayscale(cv::Mat src, double b,double g, double r)
 {
