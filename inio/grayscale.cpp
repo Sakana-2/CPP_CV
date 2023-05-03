@@ -2,7 +2,7 @@
 
 //ポインタをループ変数にしたらもっと早いかも
 
-cv::Mat grayscale(cv::Mat src, double b,double g, double r)
+cv::Mat gs(cv::Mat src, double b,double g, double r)
 {
 	cv::Mat dst(src.cols, src.rows, CV_8UC1,cv::Scalar::all(0));
 	for (int i = 0; i < src.rows; ++i)

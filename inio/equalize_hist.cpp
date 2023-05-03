@@ -2,7 +2,7 @@
 
 #include "equalize_hist.hpp"
 
-cv::Mat equalize_hist(cv::Mat src) {
+cv::Mat eh(cv::Mat src) {
 	int hist[256] = {}, cumsum[256] = {};
 	//ƒqƒXƒgƒOƒ‰ƒ€
 	for (int i = 0; i < src.rows; ++i)

@@ -2,4 +2,4 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat eh(cv::Mat src);
+cv::Mat th(cv::Mat src, uchar thresh);

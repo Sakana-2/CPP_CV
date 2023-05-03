@@ -131,13 +131,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\equalize_hist\equalize_hist.cpp" />
-    <ClCompile Include="..\grayscale\grayscale.cpp" />
+    <ClCompile Include="equalize_hist.cpp" />
+    <ClCompile Include="grayscale.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="threshold.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\equalize_hist\equalize_hist.hpp" />
-    <ClInclude Include="..\grayscale\grayscale.hpp" />
+    <ClInclude Include="equalize_hist.hpp" />
+    <ClInclude Include="grayscale.hpp" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="threshold.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

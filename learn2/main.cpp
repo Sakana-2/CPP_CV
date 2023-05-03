@@ -1,9 +1,12 @@
+#include <vector>
 #include <iostream>
 
 int main()
 {
-	double x = 2;
-	int y = 3;
-	std::cout << (x/y) << std::endl;
+	std::vector<int> vec;
+	vec.push_back(230);
+	for (int x : vec) {
+		std::cout << x << std::endl;
+	}
 	return 0;
 }

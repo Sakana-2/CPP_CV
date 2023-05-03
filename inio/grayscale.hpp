@@ -2,4 +2,4 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat grayscale(cv::Mat src, double b = 0.0722, double g = 0.7152, double r = 0.2126);
+cv::Mat gs(cv::Mat src, double b, double g, double r);
