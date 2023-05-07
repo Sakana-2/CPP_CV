@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "main.hpp"
-#include "border_prettier.hpp"
 #include "ganma_correction.hpp"
 #include "grayscale.hpp"
 #include "equalize_hist.hpp"
@@ -12,12 +11,22 @@ Inio::Inio(std::string path) {
 	history.push_back(cv::imread(path));
 }
 
+void Inio::adaptive_threshold(ushort blocksize, uchar c) {
+	if (history.back().type() == CV_8UC3) {
+		history.push_back(ad_th_mean(gs(history.back()), blocksize, c));
+	}
+	else {
+		history.push_back(ad_th_mean(history.back(), blocksize, c));
+	}
+	
+}
+
 void Inio::equalize_hist() {
 	history.push_back(eh(history.back()));
 }
 
 void Inio::ganma_correction(float ganma) {
-	history.push_back(gc(src, ganma));
+	history.push_back(gc(history.back(), ganma));
 }
 
 void Inio::grayscale(double b, double g, double r) {
@@ -34,6 +43,7 @@ void Inio::save(std::string another_path) {
 }
 
 void Inio::show() {
+	cv::namedWindow(output_path, cv::WINDOW_NORMAL);
 	cv::imshow(output_path, history.back());//あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
 	cv::waitKey(0);
 }
@@ -44,7 +54,8 @@ void Inio::threshold(uchar thresh) {
 
 int main()
 {
-	//Inio asano("../assets/lenna.jpg");
-	cv::imwrite("./saint.png", boder_replicate<cv::Vec3b>(cv::imread("../assets/tes.png", -1), 5));
+	Inio asano("../assets/st_view.jpg");
+	asano.adaptive_threshold(3, 1);
+	asano.save();
 	return 0;
 }
