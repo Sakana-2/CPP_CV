@@ -11,7 +11,7 @@ cv::Mat gs(cv::Mat src, double b,double g, double r)
 		uchar* dst_row = dst.ptr<uchar>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			dst_row[j] = static_cast<uchar>(std::nearbyint((row[j][0] * b) + (row[j][1] * g) + (row[j][2] * r)));
+			dst_row[j] = static_cast<uchar>(std::round((row[j][0] * b) + (row[j][1] * g) + (row[j][2] * r)));
 		}
 	}
 	return dst;
