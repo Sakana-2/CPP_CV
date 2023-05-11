@@ -1,10 +1,13 @@
 #include <iostream>
 
 #include "main.hpp"
-#include "ganma_correction.hpp"
+#include "gamma_correction.hpp"
 #include "grayscale.hpp"
 #include "equalize_hist.hpp"
 #include "threshold.hpp"
+#include "unsharpmask.hpp"
+
+//ラムダ関数を使って同じ値の引数を毎回入力することを避ける
 
 Inio::Inio(std::string path) {
 	output_path = path;
@@ -25,7 +28,7 @@ void Inio::equalize_hist() {
 	history.push_back(eh(history.back()));
 }
 
-void Inio::ganma_correction(float ganma) {
+void Inio::gamma_correction(double ganma) {
 	history.push_back(gc(history.back(), ganma));
 }
 
@@ -52,10 +55,12 @@ void Inio::threshold(uchar thresh) {
 	history.push_back(th(history.back(), thresh));
 }
 
+void Inio::unsharpmask(ushort blocksize, int k) {
+	history.push_back(um(history.back(), blocksize, k));
+	//カラー画像の時はhsl色空間に変換する
+}
+
 int main()
 {
-	Inio asano("../assets/st_view.jpg");
-	asano.adaptive_threshold(3, 1);
-	asano.save();
 	return 0;
 }
