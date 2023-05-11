@@ -1,6 +1,6 @@
-#include "ganma_correction.hpp"
+#include "gamma_correction.hpp"
 
-cv::Mat gc(cv::Mat src, float ganma) {
+cv::Mat gc(cv::Mat src, double ganma) {
 	for (int i = 0; i < src.rows; ++i)
 	{
 		uchar* row = src.ptr<uchar>(i);
