@@ -25,7 +25,7 @@ cv::Mat eh(cv::Mat src) {
 	double size = cumsum[255];
 	//—İÏ˜a‚ğ’¼üó‚É®Œ`
 	for (int i = 0; i < 256; ++i) {
-		cumsum[i] = std::round(cumsum[i] * 255 / (size));
+		cumsum[i] = std::nearbyint(cumsum[i] * 255 / (size));
 	}
 	//’l‚ğ’uŠ·‚µ‚Ä‚¢‚­
 	for (int i = 0; i < src.rows; ++i)
