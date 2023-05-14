@@ -11,11 +11,13 @@
 
 Inio::Inio(std::string path) {
 	output_path = path;
-	history.push_back(cv::imread(path));
+	cv::Mat src;
+	cv::imread(path).convertTo(src, CV_64FC3);
+	history.push_back(src);
 }
 
 void Inio::adaptive_threshold(ushort blocksize, uchar c) {
-	if (history.back().type() == CV_8UC3) {
+	if (history.back().type() == CV_64FC3) {
 		history.push_back(ad_th_mean(gs(history.back()), blocksize, c));
 	}
 	else {
