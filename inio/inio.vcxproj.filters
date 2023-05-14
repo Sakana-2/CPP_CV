@@ -47,10 +47,10 @@
     <ClInclude Include="threshold.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="gamma_correction.hpp">
+    <ClInclude Include="border_prettier.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="border_prettier.hpp">
+    <ClInclude Include="gamma_correction.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="unsharpmask.hpp">

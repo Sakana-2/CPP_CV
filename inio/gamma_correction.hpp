@@ -2,4 +2,4 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat gc(cv::Mat src, float ganma);
+cv::Mat gc(cv::Mat src, double ganma);

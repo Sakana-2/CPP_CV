@@ -3,14 +3,14 @@
 #include "equalize_hist.hpp"
 
 cv::Mat eh(cv::Mat src) {
-	int hist[256] = {}, cumsum[256] = {};
+	unsigned int hist[256] = {}, cumsum[256] = {};
 	//ヒストグラム
 	for (int i = 0; i < src.rows; ++i)
 	{
-		uchar* row = src.ptr<uchar>(i);
+		double* row = src.ptr<double>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			hist[row[j]] += 1;
+			hist[static_cast<int>(row[j])] += 1;
 		}
 	}
 	/*
@@ -25,17 +25,16 @@ cv::Mat eh(cv::Mat src) {
 	double size = cumsum[255];
 	//累積和を直線状に整形
 	for (int i = 0; i < 256; ++i) {
-		cumsum[i] = std::nearbyint(cumsum[i] * 255 / (size));
+		cumsum[i] = std::nearbyint(cumsum[i] * 255 / size);
 	}
 	//値を置換していく
 	for (int i = 0; i < src.rows; ++i)
 	{
-		uchar* row = src.ptr<uchar>(i);
+		double* row = src.ptr<double>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			row[j] = cumsum[row[j]];
+			row[j] = cumsum[static_cast<int>(row[j])];
 		}
 	}
-	//std::cout << src << std::endl;
 	return src;
 }
