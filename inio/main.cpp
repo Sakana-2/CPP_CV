@@ -12,8 +12,20 @@
 
 Inio::Inio(std::string path) {
 	output_path = path;
-	cv::Mat src;
-	cv::imread(path).convertTo(src, CV_64FC3);
+	cv::Mat src, raw = cv::imread(path, 0);
+	switch (raw.type())
+	{
+	case CV_8UC3:
+		raw.convertTo(src, CV_64FC3);
+		break;
+	case CV_8UC1:
+		raw.convertTo(src, CV_64FC1);
+		break;
+	default:
+		std::cout << "Not Supported." << std::endl;
+		std::exit(0);
+		break;
+	}
 	history.push_back(src);
 }
 
