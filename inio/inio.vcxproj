@@ -134,18 +134,22 @@
     <ClCompile Include="equalize_hist.cpp" />
     <ClCompile Include="gamma_correction.cpp" />
     <ClCompile Include="grayscale.cpp" />
+    <ClCompile Include="layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="threshold.cpp" />
     <ClCompile Include="unsharpmask.cpp" />
+    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="border_prettier.hpp" />
     <ClInclude Include="equalize_hist.hpp" />
     <ClInclude Include="gamma_correction.hpp" />
     <ClInclude Include="grayscale.hpp" />
+    <ClInclude Include="layer.hpp" />
     <ClInclude Include="main.hpp" />
     <ClInclude Include="threshold.hpp" />
     <ClInclude Include="unsharpmask.hpp" />
+    <ClInclude Include="util.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
