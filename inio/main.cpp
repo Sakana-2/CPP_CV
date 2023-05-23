@@ -30,6 +30,10 @@ void Inio::equalize_hist() {
 	history.push_back(eh(history.back()));
 }
 
+/*
+ディスプレイやOSによってガンマ補正をかけるかどうかを判定したうえで使う。
+また、先に計算しておいてそれを参照するようにする(未実装)（ルックアップテーブルで検索）
+*/
 void Inio::gamma_correction(double ganma) {
 	history.push_back(gc(history.back(), ganma));
 }
