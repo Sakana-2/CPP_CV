@@ -1,9 +1,14 @@
 #include <iostream>
-#include "threshold.hpp"
+
 #include "border_prettier.hpp"
+#include "grayscale.hpp"
+#include "threshold.hpp"
 
 cv::Mat th(cv::Mat src, uchar thresh)
 {
+	if (src.type() == CV_64FC3) {
+		src = gs(src);
+	}
 	for (int i = 0; i < src.rows; ++i)
 	{
 		double* row = src.ptr<double>(i);
@@ -16,6 +21,9 @@ cv::Mat th(cv::Mat src, uchar thresh)
 }
 
 cv::Mat ad_th_mean(cv::Mat src, ushort blocksize, uchar c) {
+	if (src.type() == CV_64FC3) {
+		src = gs(src);
+	}
 	cv::Mat img = boder_replicate<double>(src, blocksize);
 	ushort half = (blocksize - 1) / 2;
 
