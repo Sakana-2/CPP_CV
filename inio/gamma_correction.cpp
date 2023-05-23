@@ -1,3 +1,4 @@
+#include <cmath>
 #include "gamma_correction.hpp"
 
 cv::Mat gc(cv::Mat src, double ganma) {
