@@ -1,9 +1,10 @@
 #include <iostream>
 
 #include "main.hpp"
+#include "equalize_hist.hpp"
 #include "gamma_correction.hpp"
 #include "grayscale.hpp"
-#include "equalize_hist.hpp"
+#include "layer.hpp"
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
 
@@ -38,8 +39,16 @@ void Inio::gamma_correction(double ganma) {
 	history.push_back(gc(history.back(), ganma));
 }
 
+cv::Mat Inio::get() {
+	return history.back();
+}
+
 void Inio::grayscale(double b, double g, double r) {
 	history.push_back(gs(history.back(), b, g, r));
+}
+
+void Inio::multiply(Inio term) {
+	history.push_back(mp(history.back(), term.get()));
 }
 
 void Inio::save() {
