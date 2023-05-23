@@ -30,13 +30,7 @@ Inio::Inio(std::string path) {
 }
 
 void Inio::adaptive_threshold(ushort blocksize, uchar c) {
-	if (history.back().type() == CV_64FC3) {
-		history.push_back(ad_th_mean(gs(history.back()), blocksize, c));
-	}
-	else {
-		history.push_back(ad_th_mean(history.back(), blocksize, c));
-	}
-	
+	history.push_back(ad_th_mean(history.back(), blocksize, c));
 }
 
 void Inio::equalize_hist() {
