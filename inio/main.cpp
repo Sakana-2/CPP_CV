@@ -8,7 +8,7 @@
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
 
-//TODO: 
+//TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
 //TODO: ラムダ関数を使って同じ値の引数を毎回入力することを避ける
 
