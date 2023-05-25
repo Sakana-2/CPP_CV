@@ -8,11 +8,13 @@
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
 
-//ラムダ関数を使って同じ値の引数を毎回入力することを避ける
+//TODO: 
+
+//TODO: ラムダ関数を使って同じ値の引数を毎回入力することを避ける
 
 Inio::Inio(std::string path) {
 	output_path = path;
-	cv::Mat src, raw = cv::imread(path, 0);
+	cv::Mat src, raw = cv::imread(path, cv::IMREAD_UNCHANGED); //TODO: Exifのorientationを参考に回転をかけないようにする
 	switch (raw.type())
 	{
 	case CV_8UC3:
@@ -38,6 +40,7 @@ void Inio::equalize_hist() {
 }
 
 /*
+* TODO:
 ディスプレイやOSによってガンマ補正をかけるかどうかを判定したうえで使う。
 また、先に計算しておいてそれを参照するようにする(未実装)（ルックアップテーブルで検索）
 */
@@ -58,7 +61,7 @@ void Inio::multiply(Inio term) {
 }
 
 void Inio::save() {
-	cv::imwrite(output_path, history.back());//historyの現在位置の(略)
+	cv::imwrite(output_path, history.back());//TODO: historyの現在位置の(略)
 }
 
 void Inio::save(std::string another_path) {
@@ -68,7 +71,7 @@ void Inio::save(std::string another_path) {
 
 void Inio::show() {
 	cv::namedWindow(output_path, cv::WINDOW_NORMAL);
-	cv::imshow(output_path, history.back());//あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
+	cv::imshow(output_path, history.back());//TODO: あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
 	cv::waitKey(0);
 }
 
