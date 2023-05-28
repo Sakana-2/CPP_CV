@@ -9,7 +9,7 @@ class Inio
 	std::vector<cv::Mat> history; //ƒ|ƒCƒ“ƒ^‚Ì•Û‘¶‚Ì•û‚ª‘‚¢‚©‚à‚µ‚ê‚È‚¢
 public:
 	Inio(std::string path);
-	void adaptive_threshold(ushort blocksize, uchar c);
+	void adaptive_threshold_mean(ushort blocksize, uchar c);
 	void equalize_hist();
 	void gamma_correction(double ganma = 2.2);
 	cv::Mat get();
@@ -19,5 +19,5 @@ public:
 	void save(std::string another_path);
 	void show();
 	void threshold(uchar thresh);
-	void unsharpmask(ushort blocksize, int k);
+	void unsharpmask_mean(ushort blocksize, int k);
 };

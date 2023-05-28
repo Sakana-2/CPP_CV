@@ -31,7 +31,7 @@ Inio::Inio(std::string path) {
 	history.push_back(src);
 }
 
-void Inio::adaptive_threshold(ushort blocksize, uchar c) {
+void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
 	history.push_back(ad_th_mean(history.back(), blocksize, c));
 }
 
@@ -79,7 +79,7 @@ void Inio::threshold(uchar thresh) {
 	history.push_back(th(history.back(), thresh));
 }
 
-void Inio::unsharpmask(ushort blocksize, int k) {
+void Inio::unsharpmask_mean(ushort blocksize, int k) {
 	history.push_back(um(history.back(), blocksize, k));
 	//ƒJƒ‰[‰æ‘œ‚Ì‚ÍhslF‹óŠÔ‚É•ÏŠ·‚·‚é
 }
