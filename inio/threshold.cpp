@@ -24,7 +24,7 @@ cv::Mat ad_th_mean(cv::Mat src, ushort blocksize, uchar c) {
 	if (src.type() == CV_64FC3) {
 		src = gs(src);
 	}
-	cv::Mat img = boder_replicate<double>(src, blocksize);
+	cv::Mat img = border_replicate(src, blocksize);
 	ushort half = (blocksize - 1) / 2;
 
 	auto range_average = [img, blocksize, half](int y, int x) {
