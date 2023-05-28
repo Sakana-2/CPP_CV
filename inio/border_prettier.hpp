@@ -2,8 +2,10 @@
 
 #include <opencv2/opencv.hpp>
 
+//TODO: 端の処理の種類を増やすべきか調べる
+
 template <typename T>
-cv::Mat boder_replicate(cv::Mat src, ushort blocksize) {
+cv::Mat border_replicate(cv::Mat src, ushort blocksize) {
 	cv::Mat dst(src.rows + blocksize - 1, src.cols + blocksize - 1, src.type(), cv::Scalar::all(0));
 	ushort half = (blocksize - 1) / 2;
 	ushort c_last = src.cols - 1; //画像の縦横の最後のインデックス
