@@ -11,9 +11,7 @@ cv::Mat gs(cv::Mat src, double b,double g, double r)
 		double* dst_row = dst.ptr<double>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			//std::cout << row[j] << std::endl;
 			dst_row[j] = std::nearbyint((row[j][0] * b) + (row[j][1] * g) + (row[j][2] * r));
-			//std::cout << dst_row[j] << std::endl;
 		}
 	}
 	return dst;
