@@ -1,54 +1,54 @@
 #include <iostream>
-
-#include "border_prettier.hpp"
+#include <cmath>
+#include "box_filter.hpp"
 #include "grayscale.hpp"
 #include "threshold.hpp"
 
 cv::Mat th(cv::Mat src, uchar thresh)
 {
+	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat src2;
 	if (src.type() == CV_64FC3) {
-		src = gs(src);
+		src2 = gs(src);
 	}
-	for (int i = 0; i < src.rows; ++i)
+	else {
+		src2 = src.clone();
+	}
+	
+	for (int i = 0; i < src2.rows; ++i)
 	{
-		double* row = src.ptr<double>(i);
-		for (int j = 0; j < src.cols; ++j)
+		double* row = src2.ptr<double>(i);
+		double* o_row = dst.ptr<double>(i);
+		for (int j = 0; j < src2.cols; ++j)
 		{
-			row[j] = (row[j] > thresh) ? 255 : 0;
+			o_row[j] = (row[j] > thresh) ? 255 : 0;
 		}
 	}
-	return src;
+	return dst;
 }
 
 cv::Mat ad_th_mean(cv::Mat src, ushort blocksize, uchar c) {
+	cv::Mat src2;
 	if (src.type() == CV_64FC3) {
-		src = gs(src);
+		src2 = gs(src);
 	}
-	cv::Mat img = border_replicate(src, blocksize);
-	ushort half = (blocksize - 1) / 2;
+	else {
+		src2 = src.clone();
+	}
 
-	auto range_average = [img, blocksize, half](int y, int x) {
-		ushort sum = 0;
-		for (int i = y - half; i < y + half + 1; ++i) {
-			const double* row = img.ptr<double>(i);
-			for (int j = x - half; j < x + half + 1; ++j) {
-				sum += row[j];
-			}
-		}
-		return sum / static_cast<double>(blocksize * blocksize);
-	};
+	cv::Mat mean = box_filter(src2, blocksize);
+	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
 
-	for (int i = 0; i < src.rows; ++i)
+	for (int i = 0; i < src2.rows; ++i)
 	{
-		double* i_row = img.ptr<double>(i + half);
-		double* o_row = src.ptr<double>(i);
+		double* m_row = mean.ptr<double>(i);
+		double* row = src2.ptr<double>(i);
+		double* o_row = dst.ptr<double>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			//std::cout << i << " " << j << std::endl;
-			double th = range_average(i + half, j + half) - c;
-			uchar thresh = th < 0 ? 0 : th;
-			o_row[j] = o_row[j] > std::nearbyint(th) ? 255 : 0;
+			double th = m_row[j] - c;
+			o_row[j] = (row[j] > std::nearbyint(th)) ? 255 : 0;
 		}
 	}
-	return src;
+	return dst;
 }

@@ -27,14 +27,17 @@ cv::Mat eh(cv::Mat src) {
 	for (int i = 0; i < 256; ++i) {
 		cumsum[i] = std::nearbyint(cumsum[i] * 255 / size);
 	}
+
+	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
 	//’l‚ð’uŠ·‚µ‚Ä‚¢‚­
 	for (int i = 0; i < src.rows; ++i)
 	{
 		double* row = src.ptr<double>(i);
+		double* o_row = dst.ptr<double>(i);
 		for (int j = 0; j < src.cols; ++j)
 		{
-			row[j] = cumsum[static_cast<int>(row[j])];
+			o_row[j] = cumsum[static_cast<int>(row[j])];
 		}
 	}
-	return src;
+	return dst;
 }
