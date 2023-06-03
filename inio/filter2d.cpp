@@ -15,19 +15,20 @@ cv::Mat filter2d(cv::Mat src, cv::Mat kernel) {
 	}
 
 	cv::Mat img = border_replicate(src,kernel.rows);
+	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
 	int half = (kernel.rows - 1) / 2;
 
 
-	for (int i = 0; i < src.rows; ++i)
+	for (int i = 0; i < dst.rows; ++i)
 	{
-		double* o_row = src.ptr<double>(i);
-		for (int j = 0; j < src.cols; ++j)
+		double* o_row = dst.ptr<double>(i);
+		for (int j = 0; j < dst.cols; ++j)
 		{
 			//畳み込み処 (カーネルの左上のインデックスが
 			//元の画像をfor文で回した時のインデックスと一致)
 			double sum = 0;
 			for (int l = i; l < i + (2 * half) + 1; ++l) { 
-				double* i_row = img.ptr<double>(i);
+				double* i_row = img.ptr<double>(l);
 				double* k_row = kernel.ptr<double>(l-i);
 				for (int m = j; m < j + (2 * half) + 1; ++m) {
 					sum += i_row[m] * k_row[m - j];
@@ -39,10 +40,8 @@ cv::Mat filter2d(cv::Mat src, cv::Mat kernel) {
 			else if (sum > 255) {
 				sum = 255;
 			}
-			o_row[j] = std::nearbyint(sum);
+			o_row[j] = sum; //丸めは最後に
 		}
 	}
-	
-	return src;
-
-}
+	return dst;
+} 
