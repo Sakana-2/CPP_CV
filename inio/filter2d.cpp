@@ -4,7 +4,6 @@
 #include "border_prettier.hpp"
 
 cv::Mat filter2d(cv::Mat src, cv::Mat kernel) {
-
 	if (kernel.rows != kernel.cols) {
 		std::cout << "Sorry, not support rectangular kernel." << std::endl;
 		std::exit(0);
