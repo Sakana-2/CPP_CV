@@ -131,9 +131,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="border_prettier.cpp" />
+    <ClCompile Include="box_filter.cpp" />
+    <ClCompile Include="edge_detection.cpp" />
+    <ClCompile Include="filter2d.cpp" />
+    <ClCompile Include="filter2d.hpp" />
     <ClCompile Include="equalize_hist.cpp" />
     <ClCompile Include="gamma_correction.cpp" />
+    <ClCompile Include="gaussian_blur.cpp" />
     <ClCompile Include="grayscale.cpp" />
+    <ClCompile Include="invert.cpp" />
     <ClCompile Include="layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="threshold.cpp" />
@@ -142,9 +149,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="border_prettier.hpp" />
+    <ClInclude Include="box_filter.hpp" />
+    <ClInclude Include="edge_detection.hpp" />
     <ClInclude Include="equalize_hist.hpp" />
     <ClInclude Include="gamma_correction.hpp" />
+    <ClInclude Include="gaussian_blur.hpp" />
     <ClInclude Include="grayscale.hpp" />
+    <ClInclude Include="invert.hpp" />
     <ClInclude Include="layer.hpp" />
     <ClInclude Include="main.hpp" />
     <ClInclude Include="threshold.hpp" />
