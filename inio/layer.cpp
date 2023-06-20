@@ -7,3 +7,16 @@ cv::Mat mp(cv::Mat term1, cv::Mat term2) {
 	}
 	return ((term2 / 255).mul(term1 / 255)) * 255;
 }
+
+cv::Mat _add(cv::Mat term1, cv::Mat term2) {
+	cv::Mat dst = term1 + term2;
+	for (int i = 0; i < dst.rows; ++i)
+	{
+		double* row = dst.ptr<double>(i);
+		for (int j = 0; j < dst.cols; ++j)
+		{
+			row[j] = row[j] > 255 ? 255 : row[j];
+		}
+	}
+	return dst;
+}
