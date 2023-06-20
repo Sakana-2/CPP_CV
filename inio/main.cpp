@@ -1,12 +1,15 @@
 #include <iostream>
-
+#include <cmath>
 #include "main.hpp"
+#include "edge_detection.hpp"
 #include "equalize_hist.hpp"
 #include "gamma_correction.hpp"
 #include "grayscale.hpp"
 #include "layer.hpp"
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
+
+#include "util.hpp"
 
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
@@ -24,7 +27,7 @@ Inio::Inio(std::string path) {
 		raw.convertTo(src, CV_64FC1);
 		break;
 	default:
-		std::cout << "Not Supported." << std::endl;
+		std::cout << "Not Supported " << raw.type() << std::endl;
 		std::exit(0);
 		break;
 	}
@@ -60,6 +63,10 @@ void Inio::multiply(Inio term) {
 	history.push_back(mp(history.back(), term.get()));
 }
 
+void Inio::prewitt() {
+	history.push_back(_prewitt(history.back()));
+}
+
 void Inio::save() {
 	cv::imwrite(output_path, history.back());//TODO: historyの現在位置の(略)
 }
@@ -73,6 +80,10 @@ void Inio::show() {
 	cv::namedWindow(output_path, cv::WINDOW_NORMAL);
 	cv::imshow(output_path, history.back());//TODO: あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
 	cv::waitKey(0);
+}
+
+void Inio::sobel() {
+	history.push_back(_sobel(history.back()));
 }
 
 void Inio::threshold(uchar thresh) {

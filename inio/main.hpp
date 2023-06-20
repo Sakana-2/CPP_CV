@@ -15,9 +15,11 @@ public:
 	cv::Mat get();
 	void grayscale(double b = 0.0722, double g = 0.7152, double r = 0.2126);
 	void multiply(Inio term);
+	void prewitt();
 	void save();
 	void save(std::string another_path);
 	void show();
+	void sobel();
 	void threshold(uchar thresh);
 	void unsharpmask_mean(ushort blocksize, int k);
 };
