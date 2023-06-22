@@ -1,7 +1,7 @@
 #include "./unsharpmask.hpp"
 #include "filter2d.hpp";
 
-cv::Mat um(cv::Mat src, ushort blocksize, double k) {
+cv::Mat um_mean(cv::Mat src, ushort blocksize, double k) {
 	double half = (blocksize - 1) / 2;
 	double bb = blocksize * blocksize;
 	cv::Mat kernel(blocksize, blocksize, CV_64FC1, cv::Scalar::all(0));

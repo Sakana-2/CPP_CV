@@ -2,4 +2,4 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat um(cv::Mat src, ushort blocksize, double k);
+cv::Mat um_mean(cv::Mat src, ushort blocksize, double k);
