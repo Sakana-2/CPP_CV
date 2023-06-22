@@ -59,6 +59,10 @@ void Inio::grayscale(double b, double g, double r) {
 	history.push_back(gs(history.back(), b, g, r));
 }
 
+void Inio::laplacian(int mode) {
+	history.push_back(_laplacian(history.back(), mode));
+}
+
 void Inio::multiply(Inio term) {
 	history.push_back(mp(history.back(), term.get()));
 }
