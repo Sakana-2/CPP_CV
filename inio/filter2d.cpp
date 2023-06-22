@@ -33,12 +33,6 @@ cv::Mat filter2d(cv::Mat src, cv::Mat kernel) {
 					sum += i_row[m] * k_row[m - j];
 				}
 			}
-			if (sum < 0) {
-				sum = 0;
-			}
-			else if (sum > 255) {
-				sum = 255;
-			}
 			o_row[j] = sum; //ä€ÇﬂÇÕç≈å„Ç…
 		}
 	}
