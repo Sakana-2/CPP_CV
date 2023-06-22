@@ -4,11 +4,6 @@
 #include "layer.hpp"
 #include "filter2d.hpp"
 
-enum LAPLACIAN_MODES {
-	LAPLACIAN_4,
-	LAPLACIAN_8
-};
-
 cv::Mat _prewitt(cv::Mat src) {
 	cv::Mat kernel_x(3, 3, CV_64FC1, cv::Scalar::all(0)), kernel_y(3, 3, CV_64FC1, cv::Scalar::all(0));
 	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
