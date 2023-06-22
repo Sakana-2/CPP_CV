@@ -3,3 +3,5 @@
 cv::Mat _prewitt(cv::Mat src);
 
 cv::Mat _sobel(cv::Mat src);
+
+cv::Mat _laplacian(cv::Mat src, int mode);
