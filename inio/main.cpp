@@ -10,10 +10,17 @@
 #include "unsharpmask.hpp"
 
 #include "util.hpp"
+#include "posterization.hpp"
 
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
 //TODO: ラムダ関数を使って同じ値の引数を毎回入力することを避ける
+
+/*
+WANNADO: ポスタリゼーション（ルックアップテーブル）、ラプラシアンを用いた鮮鋭化、画像情報処理工学の前半を読む、
+図形の検出について詳しく、scharrの実装、スクリーントーンの実装
+*/
+
 
 Inio::Inio(std::string path) {
 	output_path = path;
@@ -67,6 +74,10 @@ void Inio::multiply(Inio term) {
 	history.push_back(mp(history.back(), term.get()));
 }
 
+void Inio::posterize(uchar level) {
+	history.push_back(pz(history.back(), level));
+}
+
 void Inio::prewitt() {
 	history.push_back(_prewitt(history.back()));
 }
@@ -95,7 +106,7 @@ void Inio::threshold(uchar thresh) {
 }
 
 void Inio::unsharpmask_mean(ushort blocksize, int k) {
-	history.push_back(um(history.back(), blocksize, k));
+	history.push_back(um_mean(history.back(), blocksize, k));
 	//カラー画像の時はhsl色空間に変換する
 }
 

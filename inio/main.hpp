@@ -16,6 +16,7 @@ public:
 	void grayscale(double b = 0.0722, double g = 0.7152, double r = 0.2126);
 	void laplacian(int mode);
 	void multiply(Inio term);
+	void posterize(uchar level);
 	void prewitt();
 	void save();
 	void save(std::string another_path);
