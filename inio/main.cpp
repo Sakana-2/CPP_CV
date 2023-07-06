@@ -14,7 +14,7 @@
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
 /*
-WANNADO: 画像情報処理工学の前半を読む
+WANNADO: 画像情報処理工学の前半を読む。
 図形の検出について詳しく、scharrの実装、スクリーントーンの実装
 */
 
