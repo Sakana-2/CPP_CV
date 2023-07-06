@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "edge_detection.hpp"
+#include "global.hpp"
 #include "layer.hpp"
 #include "filter2d.hpp"
 
