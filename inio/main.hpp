@@ -23,5 +23,6 @@ public:
 	void show();
 	void sobel();
 	void threshold(uchar thresh);
-	void unsharpmask_mean(ushort blocksize, int k);
+	void unsharpmask_lap(int laplacian_mode, double k);
+	void unsharpmask_mean(ushort blocksize, double k);
 };

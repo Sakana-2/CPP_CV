@@ -8,7 +8,6 @@
 #include "layer.hpp"
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
-
 #include "util.hpp"
 #include "posterization.hpp"
 
@@ -17,7 +16,7 @@
 //TODO: ラムダ関数を使って同じ値の引数を毎回入力することを避ける
 
 /*
-WANNADO: ポスタリゼーション（ルックアップテーブル）、ラプラシアンを用いた鮮鋭化、画像情報処理工学の前半を読む、
+WANNADO: 画像情報処理工学の前半を読む
 図形の検出について詳しく、scharrの実装、スクリーントーンの実装
 */
 
@@ -105,7 +104,11 @@ void Inio::threshold(uchar thresh) {
 	history.push_back(th(history.back(), thresh));
 }
 
-void Inio::unsharpmask_mean(ushort blocksize, int k) {
+void Inio::unsharpmask_lap(int laplacian_mode, double k) {
+	history.push_back(um_laplacian(history.back(), laplacian_mode, k));
+}
+
+void Inio::unsharpmask_mean(ushort blocksize, double k) {
 	history.push_back(um_mean(history.back(), blocksize, k));
 	//カラー画像の時はhsl色空間に変換する
 }
