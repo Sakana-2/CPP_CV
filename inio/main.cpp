@@ -13,8 +13,6 @@
 
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
-//TODO: ラムダ関数を使って同じ値の引数を毎回入力することを避ける
-
 /*
 WANNADO: 画像情報処理工学の前半を読む
 図形の検出について詳しく、scharrの実装、スクリーントーンの実装
@@ -51,7 +49,6 @@ void Inio::equalize_hist() {
 /*
 * TODO:
 ディスプレイやOSによってガンマ補正をかけるかどうかを判定したうえで使う。
-また、先に計算しておいてそれを参照するようにする(未実装)（ルックアップテーブルで検索）
 */
 void Inio::gamma_correction(double ganma) {
 	history.push_back(gc(history.back(), ganma));
