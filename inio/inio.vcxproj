@@ -142,7 +142,9 @@
     <ClCompile Include="grayscale.cpp" />
     <ClCompile Include="invert.cpp" />
     <ClCompile Include="layer.cpp" />
+    <ClCompile Include="lut.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="posterization.cpp" />
     <ClCompile Include="threshold.cpp" />
     <ClCompile Include="unsharpmask.cpp" />
     <ClCompile Include="util.cpp" />
@@ -154,10 +156,13 @@
     <ClInclude Include="equalize_hist.hpp" />
     <ClInclude Include="gamma_correction.hpp" />
     <ClInclude Include="gaussian_blur.hpp" />
+    <ClInclude Include="global.hpp" />
     <ClInclude Include="grayscale.hpp" />
     <ClInclude Include="invert.hpp" />
     <ClInclude Include="layer.hpp" />
+    <ClInclude Include="lut.hpp" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="posterization.hpp" />
     <ClInclude Include="threshold.hpp" />
     <ClInclude Include="unsharpmask.hpp" />
     <ClInclude Include="util.hpp" />
