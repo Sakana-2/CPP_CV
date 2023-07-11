@@ -2,7 +2,7 @@
 #include "global.hpp"
 #include "./unsharpmask.hpp"
 
-cv::Mat um_laplacian(cv::Mat src, int laplacian_mode, double k) {
+cv::Mat um_laplacian(cv::Mat src, int laplacian_mode, double k, int c) {
 	cv::Mat kernel(3, 3, CV_64FC1, cv::Scalar::all(0));
 	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
 	switch (laplacian_mode)
@@ -32,10 +32,10 @@ cv::Mat um_laplacian(cv::Mat src, int laplacian_mode, double k) {
 	default:
 		break;
 	}
-	return filter2d(src,kernel);
+	return filter2d(src,kernel) + c;
 }
 
-cv::Mat um_mean(cv::Mat src, ushort blocksize, double k) {
+cv::Mat um_mean(cv::Mat src, ushort blocksize, double k, int c) {
 	double half = (blocksize - 1) / 2;
 	double bb = blocksize * blocksize;
 	cv::Mat kernel(blocksize, blocksize, CV_64FC1, cv::Scalar::all(0));
@@ -50,5 +50,5 @@ cv::Mat um_mean(cv::Mat src, ushort blocksize, double k) {
 			}
 		}
 	}
-	return filter2d(src, kernel);
+	return filter2d(src, kernel) + c;
 }

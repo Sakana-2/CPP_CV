@@ -101,12 +101,13 @@ void Inio::threshold(uchar thresh) {
 	history.push_back(th(history.back(), thresh));
 }
 
-void Inio::unsharpmask_lap(int laplacian_mode, double k) {
-	history.push_back(um_laplacian(history.back(), laplacian_mode, k));
+void Inio::unsharpmask_lap(int laplacian_mode, double k, int c) {
+	//std::cout << um_laplacian(history.back(), laplacian_mode, k, c) << std::endl;
+	history.push_back(um_laplacian(history.back(), laplacian_mode, k, c));
 }
 
-void Inio::unsharpmask_mean(ushort blocksize, double k) {
-	history.push_back(um_mean(history.back(), blocksize, k));
+void Inio::unsharpmask_mean(ushort blocksize, double k, int c) {
+	history.push_back(um_mean(history.back(), blocksize, k, c));
 	//ƒJƒ‰[‰æ‘œ‚ÌŽž‚ÍhslF‹óŠÔ‚É•ÏŠ·‚·‚é
 }
 
