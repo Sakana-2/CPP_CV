@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "main.hpp"
+#include "contrast_emphasizing.hpp"
 #include "edge_detection.hpp"
 #include "equalize_hist.hpp"
 #include "gamma_correction.hpp"
@@ -40,6 +41,10 @@ Inio::Inio(std::string path) {
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
 	history.push_back(ad_th_mean(history.back(), blocksize, c));
+}
+
+void Inio::contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max) {
+	history.push_back(ce(history.back(), i_min, i_max, o_min, o_max));
 }
 
 void Inio::equalize_hist() {
