@@ -1,9 +1,10 @@
-#include "util.hpp"
 #include <cmath>
 
+#include "global.hpp"
+#include "util.hpp"
+
 double gaussian(double s,double rr) {
-	const double pi = 3.141592653589793;
-	return std::exp(-rr / (2 * s * s)) / (2 * pi * s * s);
+	return std::exp(-rr / (2 * s * s)) / (2 * PI * s * s);
 }
 
 cv::Mat mat_nearbyint(cv::Mat src) {
