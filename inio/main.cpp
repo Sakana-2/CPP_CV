@@ -5,7 +5,9 @@
 #include "edge_detection.hpp"
 #include "equalize_hist.hpp"
 #include "gamma_correction.hpp"
+#include "global.hpp"
 #include "grayscale.hpp"
+#include "hough.hpp"
 #include "layer.hpp"
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
@@ -65,6 +67,10 @@ cv::Mat Inio::get() {
 
 void Inio::grayscale(double b, double g, double r) {
 	history.push_back(gs(history.back(), b, g, r));
+}
+
+void Inio::houghLines(double rho, double theta, int threshold) {
+	hl(history.back(), rho, theta, threshold);
 }
 
 void Inio::laplacian(int mode) {

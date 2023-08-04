@@ -15,6 +15,7 @@ public:
 	void gamma_correction(double ganma = 2.2);
 	cv::Mat get();
 	void grayscale(double b = 0.0722, double g = 0.7152, double r = 0.2126);
+	void houghLines(double rho, double theta, int threshold);
 	void laplacian(int mode);
 	void multiply(Inio term);
 	void posterize(uchar level);
