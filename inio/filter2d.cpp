@@ -14,7 +14,7 @@ cv::Mat filter2d(cv::Mat src, cv::Mat kernel) {
 	}
 
 	cv::Mat img = border_replicate(src,kernel.rows);
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 	int half = (kernel.rows - 1) / 2;
 
 

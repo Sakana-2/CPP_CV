@@ -28,7 +28,7 @@ cv::Mat eh(cv::Mat src) {
 		cumsum[i] = std::nearbyint(cumsum[i] * 255 / size);
 	}
 
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 	//’l‚ð’uŠ·‚µ‚Ä‚¢‚­
 	for (int i = 0; i < src.rows; ++i)
 	{

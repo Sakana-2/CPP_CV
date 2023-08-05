@@ -6,7 +6,7 @@
 
 cv::Mat th(cv::Mat src, uchar thresh)
 {
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 	cv::Mat src2;
 	if (src.type() == CV_64FC3) {
 		src2 = gs(src);
@@ -37,7 +37,7 @@ cv::Mat ad_th_mean(cv::Mat src, ushort blocksize, uchar c) {
 	}
 
 	cv::Mat mean = box_filter(src2, blocksize);
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst =cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 
 	for (int i = 0; i < src2.rows; ++i)
 	{

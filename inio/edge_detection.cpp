@@ -6,8 +6,8 @@
 #include "filter2d.hpp"
 
 cv::Mat _prewitt(cv::Mat src) {
-	cv::Mat kernel_x(3, 3, CV_64FC1, cv::Scalar::all(0)), kernel_y(3, 3, CV_64FC1, cv::Scalar::all(0));
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat kernel_x = cv::Mat::zeros(3, 3, CV_64FC1), kernel_y = cv::Mat::zeros(3, 3, CV_64FC1);
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 	
 	kernel_x.at<double>(0, 0) = -1;
 	kernel_x.at<double>(1, 0) = -1;
@@ -39,8 +39,8 @@ cv::Mat _prewitt(cv::Mat src) {
 }
 
 cv::Mat _sobel(cv::Mat src) {
-	cv::Mat kernel_x(3, 3, CV_64FC1, cv::Scalar::all(0)), kernel_y(3, 3, CV_64FC1, cv::Scalar::all(0));
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat kernel_x = cv::Mat::zeros(3, 3, CV_64FC1), kernel_y = cv::Mat::zeros(3, 3, CV_64FC1);
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 
 	kernel_x.at<double>(0, 0) = -1;
 	kernel_x.at<double>(1, 0) = -2;
@@ -72,7 +72,7 @@ cv::Mat _sobel(cv::Mat src) {
 }
 
 cv::Mat _laplacian(cv::Mat src, int mode) {
-	cv::Mat kernel(3, 3, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat kernel = cv::Mat::zeros(3, 3, CV_64FC1);
 
 	switch (mode)
 	{

@@ -1,7 +1,7 @@
 #include "border_prettier.hpp"
 
 cv::Mat border_replicate(cv::Mat src, ushort blocksize) {
-	cv::Mat dst(src.rows + blocksize - 1, src.cols + blocksize - 1, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst = cv::Mat::zeros(src.rows + blocksize - 1, src.cols + blocksize - 1, CV_64FC1);
 	ushort half = (blocksize - 1) / 2;
 	ushort c_last = src.cols - 1; //画像の縦横の最後のインデックス
 	ushort r_last = src.rows - 1;

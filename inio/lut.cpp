@@ -1,7 +1,7 @@
 #include "LUT.hpp"
 
 cv::Mat LUT(cv::Mat src, uchar lut[256]) {
-	cv::Mat dst(src.rows, src.cols, CV_64FC1, cv::Scalar::all(0));
+	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 	for (int i = 0; i < src.rows; ++i)
 	{
 		double* row = src.ptr<double>(i);
