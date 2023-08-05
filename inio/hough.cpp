@@ -1,5 +1,6 @@
-#include <vector>
+#include <algorithm>
 #include <cmath>
+#include <vector>
 
 #include "global.hpp"
 #include "hough.hpp"
@@ -25,6 +26,15 @@ void findLocalMaximum(int numrho, int numangle, int threshold, const int* accum,
 	}
 
 }
+
+struct hough_greater
+{
+	const int* accum;
+	hough_greater(const int* _accum):accum(_accum) {}
+	inline bool operator()(int i1, int i2) {
+		return accum[i1] > accum[i2];
+	}
+};
 
 void hl(cv::Mat src, double rho, double theta, int threshold) {
 	int numangle = std::nearbyint(PI / theta); //計算する角度の種類の数
@@ -58,6 +68,7 @@ void hl(cv::Mat src, double rho, double theta, int threshold) {
 	std::vector<int> lm_indices;
 	findLocalMaximum(numrho, numangle, threshold, accum, lm_indices);
 	
-	
+	//取得したインデックス一覧をaccumの値をもとに降順にする
+	std::sort(lm_indices.begin(), lm_indices.end(), hough_greater(accum));
 }
 
