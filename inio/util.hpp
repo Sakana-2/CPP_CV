@@ -2,7 +2,9 @@
 
 #include <opencv2/opencv.hpp>
 
-double gaussian(double s, double rr);
+inline double gaussian(double s, double rr) {
+	return std::exp(-rr / (2 * s * s)) / (2 * PI * s * s);
+}
 
 cv::Mat mat_nearbyint(cv::Mat src);
 

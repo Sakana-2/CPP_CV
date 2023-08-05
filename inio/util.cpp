@@ -3,10 +3,6 @@
 #include "global.hpp"
 #include "util.hpp"
 
-double gaussian(double s,double rr) {
-	return std::exp(-rr / (2 * s * s)) / (2 * PI * s * s);
-}
-
 cv::Mat mat_nearbyint(cv::Mat src) {
 	cv::Mat dst = cv::Mat::zeros (src.rows, src.cols, CV_64FC1);
 	for (int i = 0; i < src.rows; ++i)
