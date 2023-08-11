@@ -2,6 +2,8 @@
 
 #include <opencv2/opencv.hpp>
 
+#include "global.hpp"
+
 inline double gaussian(double s, double rr) {
 	return std::exp(-rr / (2 * s * s)) / (2 * PI * s * s);
 }

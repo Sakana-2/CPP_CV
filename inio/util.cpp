@@ -1,6 +1,5 @@
 #include <cmath>
 
-#include "global.hpp"
 #include "util.hpp"
 
 cv::Mat mat_nearbyint(cv::Mat src) {
