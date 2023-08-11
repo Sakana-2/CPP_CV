@@ -1,5 +1,7 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
+#include <vector>
+
 #include "main.hpp"
 #include "contrast_emphasizing.hpp"
 #include "edge_detection.hpp"
@@ -70,7 +72,8 @@ void Inio::grayscale(double b, double g, double r) {
 }
 
 void Inio::houghLines(double rho, double theta, int threshold) {
-	hl(history.back(), rho, theta, threshold);
+	std::vector<line> lines;
+	hl(history.back(), lines, rho, theta, threshold); //ŒŸoŒã‚Ìˆ—‚Í¡Œãì‚é
 }
 
 void Inio::laplacian(int mode) {
