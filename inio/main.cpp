@@ -6,6 +6,7 @@
 #include "contrast_emphasizing.hpp"
 #include "edge_detection.hpp"
 #include "equalize_hist.hpp"
+#include "gaussian_blur.hpp"
 #include "gamma_correction.hpp"
 #include "global.hpp"
 #include "grayscale.hpp"
@@ -61,6 +62,10 @@ void Inio::equalize_hist() {
 */
 void Inio::gamma_correction(double ganma) {
 	history.push_back(gc(history.back(), ganma));
+}
+
+void Inio::gaussisn_blur(ushort blocksize,double sigma) {
+	history.push_back(gblur(history.back(), blocksize, sigma));
 }
 
 cv::Mat Inio::get() {

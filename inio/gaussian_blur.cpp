@@ -4,7 +4,7 @@
 #include "util.hpp"
 #include "filter2d.hpp"
 
-cv::Mat gaussian_blur(cv::Mat src, ushort blocksize, double sigma) {
+cv::Mat gblur(cv::Mat src, ushort blocksize, double sigma) {
 	double half = (blocksize - 1) / 2;
 	cv::Mat kernel = cv::Mat::zeros(blocksize, blocksize, CV_64FC1);
 	double sum = 0;

@@ -13,6 +13,7 @@ public:
 	void contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max);
 	void equalize_hist();
 	void gamma_correction(double ganma = 2.2);
+	void gaussisn_blur(ushort blocksize, double sigma);
 	cv::Mat get();
 	void grayscale(double b = 0.0722, double g = 0.7152, double r = 0.2126);
 	void houghLines(double rho, double theta, int threshold);
