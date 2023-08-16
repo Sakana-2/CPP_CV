@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <opencv2/opencv.hpp>
 
 #include "global.hpp"
