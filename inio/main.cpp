@@ -3,10 +3,7 @@
 #include <pybind11/stl.h>
 #endif
 
-
-#include <cmath>
 #include <iostream>
-#include <vector>
 
 #include "main.hpp"
 #include "contrast_emphasizing.hpp"
@@ -14,7 +11,6 @@
 #include "equalize_hist.hpp"
 #include "gaussian_blur.hpp"
 #include "gamma_correction.hpp"
-#include "global.hpp"
 #include "grayscale.hpp"
 #include "hough.hpp"
 #include "layer.hpp"
@@ -32,7 +28,27 @@ TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 #ifdef NDEBUG
 namespace py = pybind11;
 PYBIND11_MODULE(inio, m) {
-	py::class_<Inio>(m,"Inio");
+	py::class_<Inio>(m, "Inio")
+		.def(py::init<std::string>())
+		.def("adaptive_threshold_mean", &Inio::adaptive_threshold_mean)
+		.def("contrast_emphasizing", &Inio::contrast_emphasizing)
+		.def("equalize_hist", &Inio::equalize_hist)
+		.def("gamma_correction", &Inio::gamma_correction)
+		.def("gaussian_blur", &Inio::gaussisn_blur)
+		.def("get", &Inio::get)
+		.def("grayscale", &Inio::grayscale)
+		.def("houghLines", &Inio::houghLines)
+		.def("laplacian", &Inio::laplacian)
+		.def("multiply", &Inio::multiply)
+		.def("posterize", &Inio::posterize)
+		.def("prewitt", &Inio::prewitt)
+		.def("save", py::overload_cast<>(&Inio::save))
+		.def("save", py::overload_cast<std::string>(&Inio::save))
+		.def("show", &Inio::show)
+		.def("threshold", &Inio::threshold)
+		.def("unsharpmask_lap", &Inio::unsharpmask_lap)
+		.def("unsharpmask_mean", &Inio::unsharpmask_mean)
+		;
 }
 #else
 int main()
@@ -57,6 +73,7 @@ Inio::Inio(std::string path):output_path(path) {
 		break;
 	}
 	history.push_back(src);
+
 }
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
@@ -83,9 +100,15 @@ void Inio::gaussisn_blur(ushort blocksize,double sigma) {
 	history.push_back(gblur(history.back(), blocksize, sigma));
 }
 
+#ifdef NDEBUG
+MyImage Inio::get() {
+	return mat2myimage(history.back());
+}
+#else
 cv::Mat Inio::get() {
 	return history.back();
 }
+#endif
 
 void Inio::grayscale(double b, double g, double r) {
 	history.push_back(gs(history.back(), b, g, r));
@@ -101,7 +124,11 @@ void Inio::laplacian(int mode) {
 }
 
 void Inio::multiply(Inio term) {
+#ifdef NDEBUG
+	history.push_back(mp(history.back(), myimage2mat(term.get())));
+#else
 	history.push_back(mp(history.back(), term.get()));
+#endif // NDEBUG
 }
 
 void Inio::posterize(uchar level) {

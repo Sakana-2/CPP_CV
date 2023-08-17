@@ -12,3 +12,7 @@ inline double gaussian(double s, double rr) {
 cv::Mat mat_nearbyint(cv::Mat src);
 
 cv::Mat mat_clump(cv::Mat src);
+
+MyImage mat2myimage(cv::Mat src);
+
+cv::Mat myimage2mat(MyImage src);
