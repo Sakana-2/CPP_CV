@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main.hpp"
+#include <opencv2/opencv.hpp>
 
 cv::Mat mp(cv::Mat term1, cv::Mat term2);
 
