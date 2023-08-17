@@ -1,3 +1,9 @@
+#ifdef NDEBUG
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#endif
+
+
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -20,13 +26,22 @@
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
 /*
-WANNADO: 画像情報処理工学の前半を読む。
-図形の検出について詳しく、scharrの実装、スクリーントーンの実装
+TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 */
 
+#ifdef NDEBUG
+namespace py = pybind11;
+PYBIND11_MODULE(inio, m) {
+	py::class_<Inio>(m,"Inio");
+}
+#else
+int main()
+{
+	return 0;
+}
+#endif
 
-Inio::Inio(std::string path) {
-	output_path = path;
+Inio::Inio(std::string path):output_path(path) {
 	cv::Mat src, raw = cv::imread(path, cv::IMREAD_UNCHANGED); //TODO: Exifのorientationを参考に回転をかけないようにする
 	switch (raw.type())
 	{
@@ -128,9 +143,4 @@ void Inio::unsharpmask_lap(int laplacian_mode, double k, int c) {
 void Inio::unsharpmask_mean(ushort blocksize, double k, int c) {
 	history.push_back(um_mean(history.back(), blocksize, k, c));
 	//カラー画像の時はhsl色空間に変換する
-}
-
-int main()
-{
-	return 0;
 }
