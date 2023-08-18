@@ -1,6 +1,6 @@
-#include <cmath>
-
 #include "util.hpp"
+
+#include <cmath>
 
 cv::Mat mat_nearbyint(cv::Mat src) {
 	cv::Mat dst = cv::Mat::zeros (src.rows, src.cols, CV_64FC1);
@@ -38,28 +38,40 @@ cv::Mat mat_clump(cv::Mat src) {
 	return dst;
 }
 
-MyImage mat2myimage(cv::Mat src) {
-	return { std::vector<double>(src.begin<double>(), src.end<double>()),src.rows,src.cols,src.channels() == 1};
+#ifdef NDEBUG
+namespace py = pybind11;
+py::dict mat2dict(cv::Mat src) {
+	py::dict dst;
+	dst["data"] = std::vector<double>(src.begin<double>(), src.end<double>());
+	dst["rows"] = src.rows;
+	dst["cols"] = src.cols;
+	dst["ismono"] = (src.channels() == 1);
+	return dst;
 }
 
-cv::Mat myimage2mat(MyImage src) {
-	cv::Mat dst(src.rows, src.cols, src.ismono ? CV_64FC1 : CV_64FC3);
-	for (int i = 0; i < src.rows; i++)
+cv::Mat dict2mat(py::dict  src) {
+	cv::Mat dst(src["rows"].cast<py::int_>(), src["cols"].cast<py::int_>(), src["ismono"].cast<py::bool_>() ? CV_64FC1 : CV_64FC3);
+	for (int i = 0; i < src["rows"].cast<py::int_>(); i++)
 	{
-		if (src.ismono) {
+		py::list data = src["data"].cast<py::list>();
+		if (src["ismono"].cast<py::bool_>()) {
 			double* row = dst.ptr<double>(i);
-			for (int j = 0; j < src.cols; j++)
+			for (int j = 0; j < src["cols"].cast<py::int_>(); j++)
 			{
-				row[j] = src.data[i * src.cols + j];
+				row[j] = data[i * src["cols"].cast<py::int_>() + j].cast<py::float_>();
 			}
 		}
 		else {
 			cv::Vec3d* row = dst.ptr<cv::Vec3d>(i);
-			for (int j = 0; j < src.cols; j+=3)
+			for (int j = 0; j < src["cols"].cast<py::int_>(); j += 3)
 			{
-				row[j] = { src.data[i * src.cols + j],src.data[i * src.cols + j + 1],src.data[i * src.cols + j + 2] };
+				int base = i * src["cols"].cast<py::int_>() + j;
+				
+				row[j] = { data[base].cast<py::float_>(),data[base + 1].cast<py::float_>(),data[base + 2].cast<py::float_>() };
 			}
 		}
 	}
 	return dst;
 }
+
+#endif // NDEBUG

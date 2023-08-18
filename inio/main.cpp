@@ -101,8 +101,8 @@ void Inio::gaussisn_blur(ushort blocksize,double sigma) {
 }
 
 #ifdef NDEBUG
-MyImage Inio::get() {
-	return mat2myimage(history.back());
+py::dict Inio::get() {
+	return mat2dict(history.back());
 }
 #else
 cv::Mat Inio::get() {
@@ -125,7 +125,7 @@ void Inio::laplacian(int mode) {
 
 void Inio::multiply(Inio term) {
 #ifdef NDEBUG
-	history.push_back(mp(history.back(), myimage2mat(term.get())));
+	history.push_back(mp(history.back(), dict2mat(term.get())));
 #else
 	history.push_back(mp(history.back(), term.get()));
 #endif // NDEBUG

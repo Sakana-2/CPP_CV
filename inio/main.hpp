@@ -1,5 +1,12 @@
 #pragma once
 
+#ifdef NDEBUG
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+namespace py = pybind11;
+#endif
+
+
 #include <string>
 #include <vector>
 #include <opencv2/opencv.hpp>
@@ -19,7 +26,7 @@ public:
 	void gamma_correction(double ganma = 2.2);
 	void gaussisn_blur(ushort blocksize, double sigma);
 #if NDEBUG
-	MyImage get();
+	py::dict get();
 #else
 	cv::Mat get();
 #endif //NDEBUG
