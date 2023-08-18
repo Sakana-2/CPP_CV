@@ -1,7 +1,5 @@
-#ifdef NDEBUG
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#endif
 
 #include <iostream>
 
@@ -25,7 +23,6 @@
 TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 */
 
-#ifdef NDEBUG
 namespace py = pybind11;
 PYBIND11_MODULE(inio, m) {
 	py::class_<Inio>(m, "Inio")
@@ -50,12 +47,6 @@ PYBIND11_MODULE(inio, m) {
 		.def("unsharpmask_mean", &Inio::unsharpmask_mean)
 		;
 }
-#else
-int main()
-{
-	return 0;
-}
-#endif
 
 Inio::Inio(std::string path):output_path(path) {
 	cv::Mat src, raw = cv::imread(path, cv::IMREAD_UNCHANGED); //TODO: Exifのorientationを参考に回転をかけないようにする
@@ -100,15 +91,9 @@ void Inio::gaussisn_blur(ushort blocksize,double sigma) {
 	history.push_back(gblur(history.back(), blocksize, sigma));
 }
 
-#ifdef NDEBUG
 py::dict Inio::get() {
 	return mat2dict(history.back());
 }
-#else
-cv::Mat Inio::get() {
-	return history.back();
-}
-#endif
 
 void Inio::grayscale(double b, double g, double r) {
 	history.push_back(gs(history.back(), b, g, r));
@@ -124,11 +109,7 @@ void Inio::laplacian(int mode) {
 }
 
 void Inio::multiply(Inio term) {
-#ifdef NDEBUG
 	history.push_back(mp(history.back(), dict2mat(term.get())));
-#else
-	history.push_back(mp(history.back(), term.get()));
-#endif // NDEBUG
 }
 
 void Inio::posterize(uchar level) {

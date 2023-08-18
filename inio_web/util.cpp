@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+namespace py = pybind11;
+
 cv::Mat mat_nearbyint(cv::Mat src) {
 	cv::Mat dst = cv::Mat::zeros (src.rows, src.cols, CV_64FC1);
 	for (int i = 0; i < src.rows; ++i)
@@ -38,8 +40,6 @@ cv::Mat mat_clump(cv::Mat src) {
 	return dst;
 }
 
-#ifdef NDEBUG
-namespace py = pybind11;
 py::dict mat2dict(cv::Mat src) {
 	py::dict dst;
 	dst["data"] = std::vector<double>(src.begin<double>(), src.end<double>());
@@ -74,4 +74,3 @@ cv::Mat dict2mat(py::dict  src) {
 	return dst;
 }
 
-#endif // NDEBUG

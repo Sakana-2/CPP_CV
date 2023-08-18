@@ -1,10 +1,8 @@
 #pragma once
 
-#ifdef NDEBUG
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 namespace py = pybind11;
-#endif
 
 
 #include <string>
@@ -25,11 +23,7 @@ public:
 	void equalize_hist();
 	void gamma_correction(double ganma = 2.2);
 	void gaussisn_blur(ushort blocksize, double sigma);
-#if NDEBUG
 	py::dict get();
-#else
-	cv::Mat get();
-#endif //NDEBUG
 	void grayscale(double b = 0.0722, double g = 0.7152, double r = 0.2126);
 	void houghLines(double rho, double theta, int threshold);
 	void laplacian(int mode);
