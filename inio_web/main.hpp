@@ -16,7 +16,7 @@ class Inio
 	std::string output_path;
 	std::vector<cv::Mat> history; //ƒ|ƒCƒ“ƒ^‚Ì•Û‘¶‚Ì•û‚ª‘‚¢‚©‚à‚µ‚ê‚È‚¢
 public:
-	Inio(std::string path);
+	Inio(py::dict asset);
 
 	void adaptive_threshold_mean(ushort blocksize, uchar c);
 	void contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max);
@@ -30,9 +30,6 @@ public:
 	void multiply(Inio term);
 	void posterize(uchar level);
 	void prewitt();
-	void save();
-	void save(std::string another_path);
-	void show();
 	void sobel();
 	void threshold(uchar thresh);
 	void unsharpmask_lap(int laplacian_mode, double k, int c);

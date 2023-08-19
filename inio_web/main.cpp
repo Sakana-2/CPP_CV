@@ -24,7 +24,7 @@ TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 */
 
 namespace py = pybind11;
-PYBIND11_MODULE(inio, m) {
+PYBIND11_MODULE(inio_web, m) {
 	py::class_<Inio>(m, "Inio")
 		.def(py::init<std::string>())
 		.def("adaptive_threshold_mean", &Inio::adaptive_threshold_mean)
@@ -39,17 +39,15 @@ PYBIND11_MODULE(inio, m) {
 		.def("multiply", &Inio::multiply)
 		.def("posterize", &Inio::posterize)
 		.def("prewitt", &Inio::prewitt)
-		.def("save", py::overload_cast<>(&Inio::save))
-		.def("save", py::overload_cast<std::string>(&Inio::save))
-		.def("show", &Inio::show)
 		.def("threshold", &Inio::threshold)
 		.def("unsharpmask_lap", &Inio::unsharpmask_lap)
 		.def("unsharpmask_mean", &Inio::unsharpmask_mean)
 		;
 }
 
-Inio::Inio(std::string path):output_path(path) {
-	cv::Mat src, raw = cv::imread(path, cv::IMREAD_UNCHANGED); //TODO: Exifのorientationを参考に回転をかけないようにする
+Inio::Inio(py::dict asset) {
+
+	cv::Mat src, raw = dict2mat(asset);
 	switch (raw.type())
 	{
 	case CV_8UC3:
@@ -118,21 +116,6 @@ void Inio::posterize(uchar level) {
 
 void Inio::prewitt() {
 	history.push_back(_prewitt(history.back()));
-}
-
-void Inio::save() {
-	cv::imwrite(output_path, history.back());//TODO: historyの現在位置の(略)
-}
-
-void Inio::save(std::string another_path) {
-	output_path = another_path;
-	save();
-}
-
-void Inio::show() {
-	cv::namedWindow(output_path, cv::WINDOW_NORMAL);
-	cv::imshow(output_path, history.back());//TODO: あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
-	cv::waitKey(0);
 }
 
 void Inio::sobel() {
