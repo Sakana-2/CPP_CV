@@ -11,6 +11,7 @@
 #include "gamma_correction.hpp"
 #include "grayscale.hpp"
 #include "hough.hpp"
+#include "invert.hpp"
 #include "layer.hpp"
 #include "threshold.hpp"
 #include "unsharpmask.hpp"
@@ -26,7 +27,7 @@ TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 namespace py = pybind11;
 PYBIND11_MODULE(inio_web, m) {
 	py::class_<Inio>(m, "Inio")
-		.def(py::init<std::string>())
+		.def(py::init<py::dict>())
 		.def("adaptive_threshold_mean", &Inio::adaptive_threshold_mean)
 		.def("contrast_emphasizing", &Inio::contrast_emphasizing)
 		.def("equalize_hist", &Inio::equalize_hist)
@@ -35,6 +36,7 @@ PYBIND11_MODULE(inio_web, m) {
 		.def("get", &Inio::get)
 		.def("grayscale", &Inio::grayscale)
 		.def("houghLines", &Inio::houghLines)
+		.def("invert",&Inio::invert)
 		.def("laplacian", &Inio::laplacian)
 		.def("multiply", &Inio::multiply)
 		.def("posterize", &Inio::posterize)
@@ -100,6 +102,10 @@ void Inio::grayscale(double b, double g, double r) {
 void Inio::houghLines(double rho, double theta, int threshold) {
 	std::vector<line> lines;
 	hl(history.back(), lines, rho, theta, threshold); //検出後の処理は今後作る
+}
+
+void Inio::invert() {
+	history.push_back(invrt(history.back()));
 }
 
 void Inio::laplacian(int mode) {
