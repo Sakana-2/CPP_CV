@@ -23,29 +23,16 @@ TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 
 int main()
 {
-	Inio machida1("../results2/test3.png");
-	machida1.posterize(4);
-	machida1.save("../results2/test4.png");
 	return 0;
 }
 
 Inio::Inio(std::string path):output_path(path) {
-	cv::Mat src, raw = cv::imread(path, cv::IMREAD_UNCHANGED); //TODO: Exifのorientationを参考に回転をかけないようにする
-	switch (raw.type())
-	{
-	case CV_8UC3:
-		raw.convertTo(src, CV_64FC3);
-		break;
-	case CV_8UC1:
-		raw.convertTo(src, CV_64FC1);
-		break;
-	default:
-		std::cout << "Not Supported " << raw.type() << std::endl;
-		std::exit(0);
-		break;
+	cv::Mat src, raw = cv::imread(path, cv::IMREAD_COLOR); //TODO: Exifのorientationを参考に回転をかけないようにする
+	raw.convertTo(src, CV_64FC3);
+	if (isfakegray(src)) {
+		src = make_realgray(src);
 	}
 	history.push_back(src);
-
 }
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
