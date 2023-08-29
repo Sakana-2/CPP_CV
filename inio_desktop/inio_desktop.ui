@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>inio_desktopClass</class>
+ <widget class="QMainWindow" name="inio_desktopClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>575</width>
+    <height>521</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>inio_desktop</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>575</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>ファイル</string>
+    </property>
+    <addaction name="Open"/>
+    <addaction name="Save"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>ぼかし</string>
+    </property>
+    <addaction name="box_filter"/>
+    <addaction name="gaussian_filter"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>階調変換</string>
+    </property>
+    <addaction name="gamma_correction"/>
+    <addaction name="contrast_emphasize"/>
+    <addaction name="invert"/>
+    <addaction name="equ_hist"/>
+    <addaction name="posterize"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>輪郭検出</string>
+    </property>
+    <addaction name="sobel"/>
+    <addaction name="prewitt"/>
+    <addaction name="laplacian"/>
+   </widget>
+   <widget class="QMenu" name="menu2">
+    <property name="title">
+     <string>2値化</string>
+    </property>
+    <addaction name="threshold"/>
+    <addaction name="adaptive_threshold"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>その他</string>
+    </property>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>鮮鋭化</string>
+     </property>
+     <addaction name="mean_usm"/>
+     <addaction name="lap_usm"/>
+    </widget>
+    <addaction name="menu_6"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu2"/>
+   <addaction name="menu_5"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="Open">
+   <property name="text">
+    <string>開く</string>
+   </property>
+  </action>
+  <action name="Save">
+   <property name="text">
+    <string>保存する</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="box_filter">
+   <property name="text">
+    <string>平均ぼかし</string>
+   </property>
+  </action>
+  <action name="gaussian_filter">
+   <property name="text">
+    <string>ガウスぼかし</string>
+   </property>
+  </action>
+  <action name="gamma_correction">
+   <property name="text">
+    <string>ガンマ補正</string>
+   </property>
+  </action>
+  <action name="contrast_emphasize">
+   <property name="text">
+    <string>コントラスト強調</string>
+   </property>
+  </action>
+  <action name="invert">
+   <property name="text">
+    <string>反転</string>
+   </property>
+  </action>
+  <action name="equ_hist">
+   <property name="text">
+    <string>ヒストグラム平坦化</string>
+   </property>
+  </action>
+  <action name="posterize">
+   <property name="text">
+    <string>ポスタリゼーション</string>
+   </property>
+  </action>
+  <action name="sobel">
+   <property name="text">
+    <string>ソーベル</string>
+   </property>
+  </action>
+  <action name="prewitt">
+   <property name="text">
+    <string>プレヴィット</string>
+   </property>
+  </action>
+  <action name="laplacian">
+   <property name="text">
+    <string>ラプラシアン</string>
+   </property>
+  </action>
+  <action name="threshold">
+   <property name="text">
+    <string>通常2値化</string>
+   </property>
+  </action>
+  <action name="adaptive_threshold">
+   <property name="text">
+    <string>適応的2値化</string>
+   </property>
+  </action>
+  <action name="mean_usm">
+   <property name="text">
+    <string>平均鮮鋭化</string>
+   </property>
+  </action>
+  <action name="lap_usm">
+   <property name="text">
+    <string>ラプラシアン鮮鋭化</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="inio_desktop.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Open</sender>
+   <signal>triggered()</signal>
+   <receiver>Open</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
