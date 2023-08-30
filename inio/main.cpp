@@ -21,13 +21,8 @@
 TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 */
 
-int main()
-{
-	return 0;
-}
-
 Inio::Inio(std::string path):output_path(path) {
-	cv::Mat src, raw = cv::imread(path, cv::IMREAD_COLOR); //TODO: Exifのorientationを参考に回転をかけないようにする
+	cv::Mat src, raw = cv::imread(path, cv::IMREAD_COLOR);
 	raw.convertTo(src, CV_64FC3);
 	if (isfakegray(src)) {
 		src = make_realgray(src);
@@ -60,7 +55,7 @@ void Inio::gaussisn_blur(ushort blocksize,double sigma) {
 }
 
 cv::Mat Inio::get() {
-	return history.back();
+	return history.back().clone();
 }
 
 void Inio::grayscale(double b, double g, double r) {
