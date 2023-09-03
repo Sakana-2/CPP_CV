@@ -23,7 +23,7 @@ bool isfakegray(cv::Mat src) {
 		cv::Vec3d* row = src.ptr<cv::Vec3d>(i);
 		for (int j = 0; j < src.cols; j++)
 		{
-			if ((row[j][0] != row[j][1]) || (row[j][1] != row[j][2]) || (row[j][2] == row[j][0]))
+			if ((row[j][0] != row[j][1]) || (row[j][1] != row[j][2]) || (row[j][2] != row[j][0]))
 			{
 				return false;
 			}
