@@ -6,20 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>521</height>
+    <width>770</width>
+    <height>548</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>inio_desktop</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="image">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>50</y>
+      <width>371</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>575</width>
+     <width>770</width>
      <height>22</height>
     </rect>
    </property>
@@ -97,6 +111,9 @@
    </property>
   </action>
   <action name="Save">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>保存する</string>
    </property>
@@ -105,71 +122,113 @@
    </property>
   </action>
   <action name="box_filter">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>平均ぼかし</string>
    </property>
   </action>
   <action name="gaussian_filter">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ガウスぼかし</string>
    </property>
   </action>
   <action name="gamma_correction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ガンマ補正</string>
    </property>
   </action>
   <action name="contrast_emphasize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>コントラスト強調</string>
    </property>
   </action>
   <action name="invert">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>反転</string>
    </property>
   </action>
   <action name="equ_hist">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ヒストグラム平坦化</string>
    </property>
   </action>
   <action name="posterize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ポスタリゼーション</string>
    </property>
   </action>
   <action name="sobel">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ソーベル</string>
    </property>
   </action>
   <action name="prewitt">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>プレヴィット</string>
    </property>
   </action>
   <action name="laplacian">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ラプラシアン</string>
    </property>
   </action>
   <action name="threshold">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>通常2値化</string>
    </property>
   </action>
   <action name="adaptive_threshold">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>適応的2値化</string>
    </property>
   </action>
   <action name="mean_usm">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>平均鮮鋭化</string>
    </property>
   </action>
   <action name="lap_usm">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>ラプラシアン鮮鋭化</string>
    </property>
@@ -179,22 +238,5 @@
  <resources>
   <include location="inio_desktop.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>Open</sender>
-   <signal>triggered()</signal>
-   <receiver>Open</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
