@@ -5,6 +5,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.ImageLabel->setMinimumSize(1, 1);
 }
 
 void inio_desktop::actionsEnabled() {
@@ -45,14 +46,18 @@ void inio_desktop::reload() {
 		src = data;
 	}
 	
-	qimg = QImage(src.data, src.cols, src.rows, src.step, QImage::Format_BGR888);
+	_qpixmap = QPixmap::fromImage(QImage(src.data, src.cols, src.rows, src.step, QImage::Format_BGR888));
 	displayImage();
 }
 
 void inio_desktop::displayImage() {
-	int w = ui.image->width();
-	int h = ui.image->height();
-	ui.image->setPixmap(QPixmap::fromImage(qimg.scaled(w, h, Qt::KeepAspectRatio)));
+	int w = ui.ImageLabel->width();
+	int h = ui.ImageLabel->height();
+	ui.ImageLabel->setPixmap(_qpixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+}
+
+void inio_desktop::resizeEvent(QResizeEvent* event) {
+	displayImage();
 }
 
 inio_desktop::~inio_desktop()

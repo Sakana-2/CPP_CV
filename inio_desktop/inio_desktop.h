@@ -21,9 +21,12 @@ private slots:
 private:
 	Ui::inio_desktopClass ui;
 	Inio img;
-	QImage qimg;
+	QPixmap _qpixmap;
 
 	void actionsEnabled();
 	void reload();
 	void displayImage();
+
+protected:
+	void resizeEvent(QResizeEvent* event);
 };
