@@ -26,7 +26,9 @@ public:
 	void prewitt();
 	void save();
 	void save(std::string another_path);
+
 	void load(std::string path);
+	void load(cv::Mat raw);
 	void show();
 	void sobel();
 	void threshold(uchar thresh);

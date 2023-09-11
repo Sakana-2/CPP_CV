@@ -23,7 +23,11 @@ TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装
 
 void Inio::load(std::string path) {
 	output_path = path;
-	cv::Mat src, raw = cv::imread(path, cv::IMREAD_COLOR);
+	load(cv::imread(path, cv::IMREAD_COLOR));
+}
+
+void Inio::load(cv::Mat raw) {
+	cv::Mat src;
 	raw.convertTo(src, CV_64FC3);
 	if (isfakegray(src)) {
 		history.push_back(make_realgray(src));
