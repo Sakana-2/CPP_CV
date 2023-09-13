@@ -12,6 +12,7 @@ class Inio
 	std::vector<cv::Mat> history; //ƒ|ƒCƒ“ƒ^‚Ì•Û‘¶‚Ì•û‚ª‘‚¢‚©‚à‚µ‚ê‚È‚¢
 public:
 	void adaptive_threshold_mean(ushort blocksize, uchar c);
+	void box_filter(ushort blocksize);
 	void contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max);
 	void equalize_hist();
 	void gamma_correction(double ganma = 2.2);

@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "main.hpp"
+#include "box_filter.hpp"
 #include "contrast_emphasizing.hpp"
 #include "edge_detection.hpp"
 #include "equalize_hist.hpp"
@@ -39,6 +40,10 @@ void Inio::load(cv::Mat raw) {
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
 	history.push_back(ad_th_mean(history.back(), blocksize, c));
+}
+
+void Inio::box_filter(ushort blocksize) {
+	history.push_back(bf(history.back(), blocksize));
 }
 
 void Inio::contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max) {

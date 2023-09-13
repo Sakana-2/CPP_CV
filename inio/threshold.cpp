@@ -36,7 +36,7 @@ cv::Mat ad_th_mean(cv::Mat src, ushort blocksize, uchar c) {
 		src2 = src.clone();
 	}
 
-	cv::Mat mean = box_filter(src2, blocksize);
+	cv::Mat mean = bf(src2, blocksize);
 	cv::Mat dst =cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 
 	for (int i = 0; i < src2.rows; ++i)
