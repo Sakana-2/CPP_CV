@@ -30,6 +30,7 @@ void Inio::load(std::string path) {
 void Inio::load(cv::Mat raw) {
 	cv::Mat src;
 	raw.convertTo(src, CV_64FC3);
+	history.clear();
 	if (isfakegray(src)) {
 		history.push_back(make_realgray(src));
 	}
