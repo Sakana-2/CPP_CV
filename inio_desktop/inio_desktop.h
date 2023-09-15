@@ -17,15 +17,29 @@ public:
 
 private slots:
 	void on_Open_triggered();
+	void on_Save_triggered();
+	void on_SaveAs_triggered();
+	void on_BoxFilter_triggered();
+	void on_BFExe_clicked();
+	//void on_GaussianFilter_triggered();
+	//void on_ContrastEmphasize_triggered();
+	//void on_EquHist_triggered();
+	//void on_GammaCorrection_triggered();
+	//void on_Posterize_triggered();
+	//void on_Laplacian_triggered();
+	//void on_Prewitt_triggered();
+	//void on_Sobel_triggered();
+	//void on_LapUsm_triggered();
+	//void on_MeanUsm_triggered();
 
 private:
 	Ui::inio_desktopClass ui;
 	Inio img;
+	Inio preview;
 	QPixmap _qpixmap;
 
 	void actionsEnabled();
 	void reload();
-	void displayImage();
 
 protected:
 	void resizeEvent(QResizeEvent* event);

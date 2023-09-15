@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>476</height>
+    <width>751</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,6 +22,75 @@
       </property>
      </widget>
     </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QGroupBox" name="BoxFilterBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="title">
+         <string>平均ぼかし</string>
+        </property>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BlockSize</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="BFBlockSize">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>3</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="BFExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="BFProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -29,7 +98,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>658</width>
+     <width>751</width>
      <height>22</height>
     </rect>
    </property>
@@ -39,6 +108,7 @@
     </property>
     <addaction name="Open"/>
     <addaction name="Save"/>
+    <addaction name="SaveAs"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -95,7 +165,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
-    <enum>LeftToolBarArea</enum>
+    <enum>RightToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
@@ -111,7 +181,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>保存する</string>
+    <string>上書き保存</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -227,6 +297,14 @@
    </property>
    <property name="text">
     <string>ラプラシアン鮮鋭化</string>
+   </property>
+  </action>
+  <action name="SaveAs">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>別名保存</string>
    </property>
   </action>
  </widget>
