@@ -2,14 +2,15 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-namespace py = pybind11;
-
 
 #include <string>
 #include <vector>
+
 #include <opencv2/opencv.hpp>
 
 #include "global.hpp"
+
+namespace py = pybind11;
 
 class Inio
 {

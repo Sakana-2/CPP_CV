@@ -48,7 +48,6 @@ PYBIND11_MODULE(inio_web, m) {
 }
 
 Inio::Inio(py::dict asset) {
-
 	cv::Mat src, raw = dict2mat(asset);
 	switch (raw.type())
 	{
