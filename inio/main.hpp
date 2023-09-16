@@ -8,8 +8,11 @@
 
 class Inio
 {
+private:
 	std::string output_path;
 	std::vector<cv::Mat> history; //ƒ|ƒCƒ“ƒ^‚Ì•Û‘¶‚Ì•û‚ª‘‚¢‚©‚à‚µ‚ê‚È‚¢
+	uint index;
+	void set(cv::Mat src);
 public:
 	void adaptive_threshold_mean(ushort blocksize, uchar c);
 	void box_filter(ushort blocksize);
@@ -25,14 +28,15 @@ public:
 	void multiply(Inio term);
 	void posterize(uchar level);
 	void prewitt();
+	void redo();
 	void save();
 	void save(std::string another_path);
-
 	void load(std::string path);
 	void load(cv::Mat raw);
 	void show();
 	void sobel();
 	void threshold(uchar thresh);
+	void undo();
 	void unsharpmask_lap(int laplacian_mode, double k, int c);
 	void unsharpmask_mean(ushort blocksize, double k, int c);
 };

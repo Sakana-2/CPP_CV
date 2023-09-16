@@ -32,27 +32,27 @@ void Inio::load(cv::Mat raw) {
 	raw.convertTo(src, CV_64FC3);
 	history.clear();
 	if (isfakegray(src)) {
-		history.push_back(make_realgray(src));
+		this->set(make_realgray(src));
 	}
 	else {
-		history.push_back(src);
+		this->set(src);
 	}
 }
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
-	history.push_back(ad_th_mean(history.back(), blocksize, c));
+	this->set(ad_th_mean(this->get(), blocksize, c));
 }
 
 void Inio::box_filter(ushort blocksize) {
-	history.push_back(bf(history.back(), blocksize));
+	this->set(bf(this->get(), blocksize));
 }
 
 void Inio::contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max) {
-	history.push_back(ce(history.back(), i_min, i_max, o_min, o_max));
+	this->set(ce(this->get(), i_min, i_max, o_min, o_max));
 }
 
 void Inio::equalize_hist() {
-	history.push_back(eh(history.back()));
+	this->set(eh(this->get()));
 }
 
 /*
@@ -60,48 +60,54 @@ void Inio::equalize_hist() {
 ディスプレイやOSによってガンマ補正をかけるかどうかを判定したうえで使う。
 */
 void Inio::gamma_correction(double ganma) {
-	history.push_back(gc(history.back(), ganma));
+	this->set(gc(this->get(), ganma));
 }
 
 void Inio::gaussisn_blur(ushort blocksize,double sigma) {
-	history.push_back(gblur(history.back(), blocksize, sigma));
+	this->set(gblur(this->get(), blocksize, sigma));
 }
 
 cv::Mat Inio::get() {
-	return history.back().clone();
+	return history[(int)history.size() - index].clone();
 }
 
 void Inio::grayscale(double b, double g, double r) {
-	history.push_back(gs(history.back(), b, g, r));
+	this->set(gs(this->get(), b, g, r));
 }
 
 void Inio::houghLines(double rho, double theta, int threshold) {
 	std::vector<line> lines;
-	hl(history.back(), lines, rho, theta, threshold); //検出後の処理は今後作る
+	hl(this->get(), lines, rho, theta, threshold); //検出後の処理は今後作る
 }
 
 void Inio::invert() {
-	history.push_back(invrt(history.back()));
+	this->set(invrt(this->get()));
 }
 
 void Inio::laplacian(int mode) {
-	history.push_back(_laplacian(history.back(), mode));
+	this->set(_laplacian(this->get(), mode));
 }
 
 void Inio::multiply(Inio term) {
-	history.push_back(mp(history.back(), term.get()));
+	this->set(mp(this->get(), term.get()));
 }
 
 void Inio::posterize(uchar level) {
-	history.push_back(pz(history.back(), level));
+	this->set(pz(this->get(), level));
 }
 
 void Inio::prewitt() {
-	history.push_back(_prewitt(history.back()));
+	this->set(_prewitt(this->get()));
+}
+
+void Inio::redo() {
+	if (index > 0) {
+		index--;
+	}
 }
 
 void Inio::save() {
-	cv::imwrite(output_path, history.back());//TODO: historyの現在位置の(略)
+	cv::imwrite(output_path, this->get());//TODO: historyの現在位置の(略)
 }
 
 void Inio::save(std::string another_path) {
@@ -109,26 +115,40 @@ void Inio::save(std::string another_path) {
 	save();
 }
 
+void Inio::set(cv::Mat src) {
+	if (index != 0)
+	{
+		history.erase(history.end() - index, history.end());
+	}
+	history.push_back(src);
+}
+
 void Inio::show() {
 	cv::namedWindow(output_path, cv::WINDOW_NORMAL);
-	cv::imshow(output_path, history.back());//TODO: あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
+	cv::imshow(output_path, this->get());//TODO: あとで、タイトルを整形して代入するようにする historyの現在位置の画像を表示できるようにする。デフォルトのガンマ値を変えられるようにする
 	cv::waitKey(0);
 }
 
 void Inio::sobel() {
-	history.push_back(_sobel(history.back()));
+	this->set(_sobel(this->get()));
 }
 
 void Inio::threshold(uchar thresh) {
-	history.push_back(th(history.back(), thresh));
+	this->set(th(this->get(), thresh));
+}
+
+void Inio::undo() {
+	if (((int)history.size()-1) > index)
+	{
+		index++;
+	}
 }
 
 void Inio::unsharpmask_lap(int laplacian_mode, double k, int c) {
-	//std::cout << um_laplacian(history.back(), laplacian_mode, k, c) << std::endl;
-	history.push_back(um_laplacian(history.back(), laplacian_mode, k, c));
+	this->set(um_laplacian(this->get(), laplacian_mode, k, c));
 }
 
 void Inio::unsharpmask_mean(ushort blocksize, double k, int c) {
-	history.push_back(um_mean(history.back(), blocksize, k, c));
+	this->set(um_mean(this->get(), blocksize, k, c));
 	//カラー画像の時はhsl色空間に変換する
 }
