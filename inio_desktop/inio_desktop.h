@@ -21,7 +21,8 @@ private slots:
 	void on_SaveAs_triggered();
 	void on_BoxFilter_triggered();
 	void on_BFExe_clicked();
-	//void on_GaussianFilter_triggered();
+	void on_GaussianFilter_triggered();
+	void on_GFExe_clicked();
 	//void on_ContrastEmphasize_triggered();
 	//void on_EquHist_triggered();
 	//void on_GammaCorrection_triggered();
@@ -36,7 +37,7 @@ private:
 	Ui::inio_desktopClass ui;
 	Inio img;
 	Inio preview;
-	QPixmap _qpixmap;
+	QPixmap _pixmap;
 
 	void actionsEnabled();
 	void reload();

@@ -10,7 +10,8 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.setupUi(this);
 	setWindowTitle("Inio");
 	ui.ImageLabel->setMinimumSize(1, 1);
-	ui.BoxFilterBox->hide();
+	ui.BFBox->hide();
+	ui.GFBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
@@ -27,7 +28,7 @@ void inio_desktop::actionsEnabled() {
 void inio_desktop::reload() {
 	int w = ui.ImageLabel->width();
 	int h = ui.ImageLabel->height();
-	ui.ImageLabel->setPixmap(_qpixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	ui.ImageLabel->setPixmap(_pixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
 void inio_desktop::resizeEvent(QResizeEvent* event) {
@@ -46,7 +47,7 @@ void inio_desktop::on_Open_triggered() {
 	}
 	img.load(filename.toLocal8Bit().toStdString());
 	setWindowTitle(filename);
-	_qpixmap = mat2qpixmap(img.get());
+	_pixmap = mat2qpixmap(img.get());
 	reload();
 	actionsEnabled();
 }

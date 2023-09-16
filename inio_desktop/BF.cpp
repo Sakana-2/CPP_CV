@@ -2,7 +2,7 @@
 #include "global.hpp"
 
 void inio_desktop::on_BoxFilter_triggered() {
-	ui.BoxFilterBox->show();
+	ui.BFBox->show();
 	ui.BFProcessing->hide();
 };
 
@@ -16,10 +16,9 @@ void inio_desktop::on_BFExe_clicked() {
 		value -= 1;
 	}
 
-	preview.load(img.get());
-	preview.box_filter(value);
+	img.box_filter(value);
 
-	_qpixmap = mat2qpixmap(preview.get());
+	_pixmap = mat2qpixmap(img.get());
 	reload();
 
 	ui.BFProcessing->hide();
