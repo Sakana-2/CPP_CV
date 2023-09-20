@@ -11,7 +11,7 @@ class Inio
 private:
 	std::string output_path;
 	std::vector<cv::Mat> history; //ƒ|ƒCƒ“ƒ^‚Ì•Û‘¶‚Ì•û‚ª‘‚¢‚©‚à‚µ‚ê‚È‚¢
-	uint index;
+	uint index = 0;
 	void set(cv::Mat src);
 public:
 	void adaptive_threshold_mean(ushort blocksize, uchar c);

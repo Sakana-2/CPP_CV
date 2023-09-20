@@ -68,7 +68,7 @@ void Inio::gaussisn_blur(ushort blocksize,double sigma) {
 }
 
 cv::Mat Inio::get() {
-	return history[(int)history.size() - index].clone();
+	return history[(int)history.size() - 1 - index].clone();
 }
 
 void Inio::grayscale(double b, double g, double r) {
