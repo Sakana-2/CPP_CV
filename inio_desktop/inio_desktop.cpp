@@ -70,5 +70,17 @@ void inio_desktop::on_SaveAs_triggered() {
 	setWindowTitle(filename);
 };
 
+void inio_desktop::on_Undo_triggered() {
+	img.undo();
+	_pixmap = mat2qpixmap(img.get());
+	reload();
+}
+
+void inio_desktop::on_Redo_triggered() {
+	img.redo();
+	_pixmap = mat2qpixmap(img.get());
+	reload();
+}
+
 inio_desktop::~inio_desktop()
 {}

@@ -19,6 +19,8 @@ private slots:
 	void on_Open_triggered();
 	void on_Save_triggered();
 	void on_SaveAs_triggered();
+	void on_Undo_triggered();
+	void on_Redo_triggered();
 	void on_BoxFilter_triggered();
 	void on_BFExe_clicked();
 	void on_GaussianFilter_triggered();

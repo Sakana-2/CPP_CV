@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>553</height>
+    <height>776</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -247,8 +247,8 @@
     <property name="title">
      <string>編集</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="Undo"/>
+    <addaction name="Redo"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_7"/>
@@ -403,7 +403,10 @@
     <string>別名保存</string>
    </property>
   </action>
-  <action name="action">
+  <action name="Undo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>元に戻す</string>
    </property>
@@ -411,7 +414,10 @@
     <string>Ctrl+Z</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="Redo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>やり直す</string>
    </property>
