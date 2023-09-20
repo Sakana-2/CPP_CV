@@ -12,6 +12,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.ImageLabel->setMinimumSize(1, 1);
 	ui.BFBox->hide();
 	ui.GFBox->hide();
+	ui.PosterizeBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
