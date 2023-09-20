@@ -27,8 +27,8 @@ private slots:
 	void on_GFExe_clicked();
 	void on_Posterize_triggered();
 	void on_PosterizeExe_clicked();
-	//void on_ContrastEmphasize_triggered();
-	//void on_CEExe_clicked();
+	void on_ContrastEmphasize_triggered();
+	void on_CEExe_clicked();
 	//void on_EquHist_triggered();
 	//void on_GammaCorrection_triggered();
 	//void on_Laplacian_triggered();

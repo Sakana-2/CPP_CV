@@ -25,7 +25,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QGroupBox" name="BFBox_2">
+       <widget class="QGroupBox" name="CEBox">
         <property name="enabled">
          <bool>true</bool>
         </property>
