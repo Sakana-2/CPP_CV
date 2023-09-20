@@ -119,6 +119,7 @@ void Inio::set(cv::Mat src) {
 	if (index != 0)
 	{
 		history.erase(history.end() - index, history.end());
+		index = 0;
 	}
 	history.push_back(src);
 }
