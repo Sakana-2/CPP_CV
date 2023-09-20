@@ -13,6 +13,8 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.BFBox->hide();
 	ui.GFBox->hide();
 	ui.PosterizeBox->hide();
+	ui.CEBox->hide();
+	ui.EHBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
