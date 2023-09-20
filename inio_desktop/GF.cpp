@@ -2,7 +2,6 @@
 #include "global.hpp"
 
 void inio_desktop::on_GaussianFilter_triggered() {
-	qDebug() << "Ganbare";
 	ui.GFBox->show();
 	ui.GFProcessing->hide();
 };
