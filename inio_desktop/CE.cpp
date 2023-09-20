@@ -10,7 +10,17 @@ void inio_desktop::on_CEExe_clicked() {
 	ui.CEProcessing->show();
 	repaint();
 
-	const uchar imin = ui.CEIMin->value(),imax = ui.CEIMax->value(),omin = ui.CEOMin->value(),omax = ui.CEOMax->value();
+	uchar imin = ui.CEIMin->value(),imax = ui.CEIMax->value(),omin = ui.CEOMin->value(),omax = ui.CEOMax->value();
+
+	if (imin >= imax) {
+		imax = imin + 1;
+		ui.CEIMax->setValue(imax);
+	}
+	if (omin >= omax)
+	{
+		omax = omin + 1;
+		ui.CEOMax->setValue(omax);
+	}
 
 	img.contrast_emphasizing(imin, imax, omin, omax);
 
