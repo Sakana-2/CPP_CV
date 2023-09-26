@@ -16,6 +16,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.CEBox->hide();
 	ui.EHBox->hide();
 	ui.GCBox->hide();
+	ui.LPBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {

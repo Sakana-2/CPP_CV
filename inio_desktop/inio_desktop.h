@@ -33,7 +33,8 @@ private slots:
 	void on_EHExe_clicked();
 	void on_GammaCorrection_triggered();
 	void on_GCExe_clicked();
-	//void on_Laplacian_triggered();
+	void on_Laplacian_triggered();
+	void on_LPExe_clicked();
 	//void on_Prewitt_triggered();
 	//void on_Sobel_triggered();
 	//void on_LapUsm_triggered();
