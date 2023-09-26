@@ -25,6 +25,74 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QGroupBox" name="GCBox">
+        <property name="title">
+         <string>ガンマ補正</string>
+        </property>
+        <widget class="QPushButton" name="GCExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="GCProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_14">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>gamma</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="GCGamma">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>60</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
        <widget class="QGroupBox" name="EHBox">
         <property name="enabled">
          <bool>true</bool>
@@ -110,7 +178,13 @@
           </rect>
          </property>
          <property name="minimum">
-          <number>3</number>
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>254</number>
+         </property>
+         <property name="value">
+          <number>0</number>
          </property>
         </widget>
         <widget class="QPushButton" name="CEExe">
@@ -165,7 +239,13 @@
           </rect>
          </property>
          <property name="minimum">
-          <number>3</number>
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>255</number>
          </property>
         </widget>
         <widget class="QLabel" name="label_9">
@@ -191,7 +271,13 @@
           </rect>
          </property>
          <property name="minimum">
-          <number>3</number>
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>254</number>
+         </property>
+         <property name="value">
+          <number>0</number>
          </property>
         </widget>
         <widget class="QLabel" name="label_10">
@@ -217,7 +303,13 @@
           </rect>
          </property>
          <property name="minimum">
-          <number>3</number>
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>255</number>
          </property>
         </widget>
        </widget>
@@ -407,6 +499,9 @@
          </property>
          <property name="maximum">
           <number>256</number>
+         </property>
+         <property name="value">
+          <number>2</number>
          </property>
         </widget>
         <widget class="QPushButton" name="PosterizeExe">
