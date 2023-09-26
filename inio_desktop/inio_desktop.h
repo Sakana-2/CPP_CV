@@ -37,7 +37,8 @@ private slots:
 	void on_LPExe_clicked();
 	void on_Prewitt_triggered();
 	void on_PRExe_clicked();
-	//void on_Sobel_triggered();
+	void on_Sobel_triggered();
+	void on_SBExe_clicked();
 	//void on_LapUsm_triggered();
 	//void on_MeanUsm_triggered();
 
