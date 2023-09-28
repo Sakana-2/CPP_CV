@@ -19,10 +19,11 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.LPBox->hide();
 	ui.PRBox->hide();
 	ui.SBBox->hide();
+	ui.MUBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
-	QList<QMenu*> bars = ui.menuBar->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly);
+	QList<QMenu*> bars = ui.menuBar->findChildren<QMenu*>(QString(), Qt::FindChildrenRecursively);
 	for (QMenu* bar : bars)
 	{
 		for (QAction* action : bar->actions())

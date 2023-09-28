@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>1458</height>
+    <height>2112</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,6 +24,126 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QGroupBox" name="MUBox">
+        <property name="title">
+         <string>平均鮮鋭化</string>
+        </property>
+        <widget class="QLabel" name="label_16">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BlockSize</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="MUBlockSize">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>3</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="MUExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>120</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="MUProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_17">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>51</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Amount</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="MUAmount">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>60</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_18">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Adjustment</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="MUAdjustment">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>90</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </widget>
+      </item>
       <item>
        <widget class="QGroupBox" name="SBBox">
         <property name="title">
@@ -751,8 +871,8 @@
     <property name="title">
      <string>2値化</string>
     </property>
-    <addaction name="threshold"/>
-    <addaction name="adaptive_threshold"/>
+    <addaction name="Threshold"/>
+    <addaction name="AdaptiveThreshold"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
@@ -763,7 +883,6 @@
       <string>鮮鋭化</string>
      </property>
      <addaction name="MeanUsm"/>
-     <addaction name="LapUsm"/>
     </widget>
     <addaction name="menu_6"/>
    </widget>
@@ -887,7 +1006,7 @@
     <string>ラプラシアン</string>
    </property>
   </action>
-  <action name="threshold">
+  <action name="Threshold">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -895,7 +1014,7 @@
     <string>通常2値化</string>
    </property>
   </action>
-  <action name="adaptive_threshold">
+  <action name="AdaptiveThreshold">
    <property name="enabled">
     <bool>false</bool>
    </property>
