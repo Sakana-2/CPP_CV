@@ -96,7 +96,7 @@ void inio_desktop::on_Redo_triggered() {
 
 void inio_desktop::PropBoxIncubator() {
 	qDebug() << (int)displayedBox.size();
-	if ((int)displayedBox.size() == 3) {
+	if ((int)displayedBox.size() == 4) {
 		displayedBox[0]->setVisible(false);
 		displayedBox.erase(displayedBox.begin());
 	}
