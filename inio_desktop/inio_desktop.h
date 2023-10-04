@@ -21,6 +21,8 @@ private slots:
 	void on_SaveAs_triggered();
 	void on_Undo_triggered();
 	void on_Redo_triggered();
+	void on_AdaptiveThreshold_triggered();
+	void on_ATExe_clicked();
 	void on_BoxFilter_triggered();
 	void on_BFExe_clicked();
 	void on_GaussianFilter_triggered();
@@ -33,6 +35,8 @@ private slots:
 	void on_EHExe_clicked();
 	void on_GammaCorrection_triggered();
 	void on_GCExe_clicked();
+	void on_Invert_triggered();
+	void on_INExe_clicked();
 	void on_Laplacian_triggered();
 	void on_LPExe_clicked();
 	void on_Prewitt_triggered();

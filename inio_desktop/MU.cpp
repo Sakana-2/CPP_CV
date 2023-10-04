@@ -14,7 +14,7 @@ void inio_desktop::on_MUExe_clicked() {
 
 	int blocksize = ui.MUBlockSize->value();
 	double amount = ui.MUAmount->value();
-	uint adjustment = ui.MUAdjustment->value();
+	int adjustment = ui.MUAdjustment->value();
 
 	if ((blocksize % 2) == 0) {
 		blocksize -= 1;

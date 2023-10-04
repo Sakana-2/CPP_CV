@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>1952</height>
+    <height>2576</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,6 +29,100 @@
         <property name="text">
          <string>※カラー画像は自動的にグレースケールに変換されます。</string>
         </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="ATBox">
+        <property name="title">
+         <string>適応的二値化処理</string>
+        </property>
+        <widget class="QLabel" name="label_20">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BlockSize</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="ATBlockSize">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>3</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="ATExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="ATProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_22">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Adjustment</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="ATAdjustment">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>60</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>-255</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
        </widget>
       </item>
       <item>
@@ -140,7 +234,7 @@
           </rect>
          </property>
          <property name="minimum">
-          <number>0</number>
+          <number>-255</number>
          </property>
          <property name="maximum">
           <number>255</number>
@@ -186,6 +280,58 @@
          </property>
         </widget>
         <widget class="QLabel" name="label_13">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>191</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>この機能にはパラメータはありません。</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="INBox">
+        <property name="title">
+         <string>反転</string>
+        </property>
+        <widget class="QPushButton" name="INExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="INProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_21">
          <property name="enabled">
           <bool>true</bool>
          </property>

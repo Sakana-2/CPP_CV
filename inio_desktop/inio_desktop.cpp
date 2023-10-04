@@ -21,6 +21,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.SBBox->hide();
 	ui.MUBox->hide();
 	ui.THBox->hide();
+	ui.ATBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
