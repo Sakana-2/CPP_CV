@@ -22,6 +22,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.MUBox->hide();
 	ui.THBox->hide();
 	ui.ATBox->hide();
+	ui.INBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
@@ -95,7 +96,6 @@ void inio_desktop::on_Redo_triggered() {
 }
 
 void inio_desktop::PropBoxIncubator() {
-	qDebug() << (int)displayedBox.size();
 	if ((int)displayedBox.size() == 4) {
 		displayedBox[0]->setVisible(false);
 		displayedBox.erase(displayedBox.begin());
