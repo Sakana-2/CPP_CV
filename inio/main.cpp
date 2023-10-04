@@ -35,7 +35,7 @@ void Inio::load(cv::Mat raw) {
 		this->set(make_realgray(src));
 	}
 	else {
-		this->set(src);
+		this->set(gs(src)); //ŒãXC³
 	}
 }
 
