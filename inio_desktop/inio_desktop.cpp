@@ -20,6 +20,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.PRBox->hide();
 	ui.SBBox->hide();
 	ui.MUBox->hide();
+	ui.THBox->hide();
 }
 
 void inio_desktop::actionsEnabled() {
@@ -57,7 +58,9 @@ void inio_desktop::on_Open_triggered() {
 	setWindowTitle(filename);
 	_pixmap = mat2qpixmap(img.get());
 	reload();
+	ui.alert->hide();
 	actionsEnabled();
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_Save_triggered() {
@@ -88,6 +91,14 @@ void inio_desktop::on_Redo_triggered() {
 	img.redo();
 	_pixmap = mat2qpixmap(img.get());
 	reload();
+}
+
+void inio_desktop::PropBoxIncubator() {
+	qDebug() << (int)displayedBox.size();
+	if ((int)displayedBox.size() == 3) {
+		displayedBox[0]->setVisible(false);
+		displayedBox.erase(displayedBox.begin());
+	}
 }
 
 inio_desktop::~inio_desktop()

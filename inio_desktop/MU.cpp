@@ -4,6 +4,8 @@
 void inio_desktop::on_MeanUsm_triggered() {
 	ui.MUBox->show();
 	ui.MUProcessing->hide();
+	displayedBox.push_back(ui.MUBox);
+	PropBoxIncubator();
 };
 
 void inio_desktop::on_MUExe_clicked() {

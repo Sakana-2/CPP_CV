@@ -4,6 +4,8 @@
 void inio_desktop::on_Laplacian_triggered() {
 	ui.LPBox->show();
 	ui.LPProcessing->hide();
+	displayedBox.push_back(ui.LPBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_LPExe_clicked() {

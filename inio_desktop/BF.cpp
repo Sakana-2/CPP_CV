@@ -4,6 +4,8 @@
 void inio_desktop::on_BoxFilter_triggered() {
 	ui.BFBox->show();
 	ui.BFProcessing->hide();
+	displayedBox.push_back(ui.BFBox);
+	PropBoxIncubator();
 };
 
 void inio_desktop::on_BFExe_clicked() {

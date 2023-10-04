@@ -4,6 +4,8 @@
 void inio_desktop::on_Posterize_triggered() {
 	ui.PosterizeBox->show();
 	ui.PosterizeProcessing->hide();
+	displayedBox.push_back(ui.PosterizeBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_PosterizeExe_clicked() {

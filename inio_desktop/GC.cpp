@@ -4,6 +4,8 @@
 void inio_desktop::on_GammaCorrection_triggered() {
 	ui.GCBox->show();
 	ui.GCProcessing->hide();
+	displayedBox.push_back(ui.GCBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_GCExe_clicked() {

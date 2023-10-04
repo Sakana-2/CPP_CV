@@ -4,6 +4,8 @@
 void inio_desktop::on_EquHist_triggered() {
 	ui.EHBox->show();
 	ui.EHProcessing->hide();
+	displayedBox.push_back(ui.EHBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_EHExe_clicked() {

@@ -4,6 +4,8 @@
 void inio_desktop::on_Sobel_triggered() {
 	ui.SBBox->show();
 	ui.SBProcessing->hide();
+	displayedBox.push_back(ui.SBBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_SBExe_clicked() {

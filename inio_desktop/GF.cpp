@@ -4,6 +4,8 @@
 void inio_desktop::on_GaussianFilter_triggered() {
 	ui.GFBox->show();
 	ui.GFProcessing->hide();
+	displayedBox.push_back(ui.GFBox);
+	PropBoxIncubator();
 };
 
 void inio_desktop::on_GFExe_clicked() {

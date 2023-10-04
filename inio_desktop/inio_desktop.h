@@ -39,6 +39,8 @@ private slots:
 	void on_PRExe_clicked();
 	void on_Sobel_triggered();
 	void on_SBExe_clicked();
+	void on_Threshold_triggered();
+	void on_THExe_clicked();
 	void on_MeanUsm_triggered();
 	void on_MUExe_clicked();
 
@@ -47,8 +49,10 @@ private:
 	Inio img;
 	Inio preview;
 	QPixmap _pixmap;
+	std::vector<QGroupBox*> displayedBox = {};
 
 	void actionsEnabled();
+	void PropBoxIncubator();
 	void reload();
 
 protected:

@@ -4,6 +4,8 @@
 void inio_desktop::on_ContrastEmphasize_triggered() {
 	ui.CEBox->show();
 	ui.CEProcessing->hide();
+	displayedBox.push_back(ui.CEBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_CEExe_clicked() {

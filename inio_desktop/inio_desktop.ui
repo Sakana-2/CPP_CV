@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>2112</height>
+    <height>1952</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,14 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="PropsBox">
+      <item>
+       <widget class="QLabel" name="alert">
+        <property name="text">
+         <string>※カラー画像は自動的にグレースケールに変換されます。</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QGroupBox" name="MUBox">
         <property name="title">
@@ -384,7 +391,7 @@
          <bool>true</bool>
         </property>
         <property name="title">
-         <string>コントラスト平坦化</string>
+         <string>ヒストグラム平坦化</string>
         </property>
         <widget class="QPushButton" name="EHExe">
          <property name="geometry">
@@ -804,6 +811,74 @@
          </property>
         </widget>
         <widget class="QLabel" name="PosterizeProcessing">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>49</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>処理中</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="THBox">
+        <property name="title">
+         <string>二値化処理</string>
+        </property>
+        <widget class="QLabel" name="label_19">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>しきい値</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="THThreshold">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="value">
+          <number>2</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="THExe">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>75</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>実行</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="THProcessing">
          <property name="enabled">
           <bool>true</bool>
          </property>

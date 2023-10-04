@@ -2,8 +2,10 @@
 #include "global.hpp"
 
 void inio_desktop::on_Prewitt_triggered() {
-	ui.LPBox->show();
-	ui.LPProcessing->hide();
+	ui.PRBox->show();
+	ui.PRProcessing->hide();
+	displayedBox.push_back(ui.PRBox);
+	PropBoxIncubator();
 }
 
 void inio_desktop::on_PRExe_clicked() {
