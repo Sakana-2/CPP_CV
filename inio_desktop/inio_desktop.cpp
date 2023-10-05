@@ -95,6 +95,12 @@ void inio_desktop::on_Redo_triggered() {
 	reload();
 }
 
+void inio_desktop::on_Reset_triggered() {
+	img.reset();
+	_pixmap = mat2qpixmap(img.get());
+	reload();
+}
+
 void inio_desktop::PropBoxIncubator() {
 	if ((int)displayedBox.size() == 4) {
 		displayedBox[0]->setVisible(false);

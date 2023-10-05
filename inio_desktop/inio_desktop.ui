@@ -1113,6 +1113,7 @@
     </property>
     <addaction name="Undo"/>
     <addaction name="Redo"/>
+    <addaction name="Reset"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_7"/>
@@ -1287,6 +1288,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="Reset">
+   <property name="text">
+    <string>全ての変更を元に戻す</string>
    </property>
   </action>
  </widget>

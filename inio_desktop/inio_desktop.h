@@ -21,6 +21,7 @@ private slots:
 	void on_SaveAs_triggered();
 	void on_Undo_triggered();
 	void on_Redo_triggered();
+	void on_Reset_triggered();
 	void on_AdaptiveThreshold_triggered();
 	void on_ATExe_clicked();
 	void on_BoxFilter_triggered();

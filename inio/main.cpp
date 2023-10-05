@@ -106,6 +106,10 @@ void Inio::redo() {
 	}
 }
 
+void Inio::reset() {
+	index = (int)history.size() - 1;
+}
+
 void Inio::save() {
 	cv::imwrite(output_path, this->get());//TODO: history‚ÌŒ»İˆÊ’u‚Ì(—ª)
 }

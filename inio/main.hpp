@@ -29,6 +29,7 @@ public:
 	void posterize(uchar level);
 	void prewitt();
 	void redo();
+	void reset();
 	void save();
 	void save(std::string another_path);
 	void load(std::string path);
