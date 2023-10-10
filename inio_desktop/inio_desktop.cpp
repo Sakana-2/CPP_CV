@@ -23,6 +23,14 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.THBox->hide();
 	ui.ATBox->hide();
 	ui.INBox->hide();
+	ui.core_2->hide();
+
+	QPalette pal = palette();
+	QColor color = QColor(70, 70, 70);
+	pal.setColor(QPalette::Window, color);
+	this->setAutoFillBackground(true);
+	this->setPalette(pal);
+	setStyleSheet("QLabel{color:white;}QGroupBox{ color:white;}QCheckBox{ color:white;}");
 }
 
 void inio_desktop::actionsEnabled() {
@@ -61,6 +69,7 @@ void inio_desktop::on_Open_triggered() {
 	_pixmap = mat2qpixmap(img.get());
 	reload();
 	ui.alert->hide();
+	ui.core_2->show();
 	actionsEnabled();
 	PropBoxIncubator();
 }
