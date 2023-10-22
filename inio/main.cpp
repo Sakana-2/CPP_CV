@@ -3,6 +3,7 @@
 #include "main.hpp"
 #include "box_filter.hpp"
 #include "contrast_emphasizing.hpp"
+#include "dithering.hpp"
 #include "edge_detection.hpp"
 #include "equalize_hist.hpp"
 #include "gaussian_blur.hpp"
@@ -35,12 +36,16 @@ void Inio::load(cv::Mat raw) {
 		this->set(make_realgray(src));
 	}
 	else {
-		this->set(gs(src)); //ŒãXC³
+		this->set(src);
 	}
 }
 
 void Inio::adaptive_threshold_mean(ushort blocksize, uchar c) {
 	this->set(ad_th_mean(this->get(), blocksize, c));
+}
+
+void Inio::bayer(int kernelsize) {
+	this->set(_bayer(this->get(), kernelsize));
 }
 
 void Inio::box_filter(ushort blocksize) {

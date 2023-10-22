@@ -15,6 +15,7 @@ private:
 	void set(cv::Mat src);
 public:
 	void adaptive_threshold_mean(ushort blocksize, uchar c);
+	void bayer(int kernelsize);
 	void box_filter(ushort blocksize);
 	void contrast_emphasizing(uchar i_min, uchar i_max, uchar o_min, uchar o_max);
 	void equalize_hist();
