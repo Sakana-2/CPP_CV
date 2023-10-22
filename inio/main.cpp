@@ -60,10 +60,6 @@ void Inio::equalize_hist() {
 	this->set(eh(this->get()));
 }
 
-/*
-* TODO:
-ディスプレイやOSによってガンマ補正をかけるかどうかを判定したうえで使う。
-*/
 void Inio::gamma_correction(double ganma) {
 	this->set(gc(this->get(), ganma));
 }
