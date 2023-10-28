@@ -1,37 +1,17 @@
+#include <cmath>
+
 #include "dithering.hpp"
+#include "util.hpp"
 
 cv::Mat _bayer(cv::Mat src, int kernelsize) {
 	cv::Mat dst = cv::Mat::zeros(src.rows, src.cols, CV_64FC1);
 
-	double _m2[2][2] = { {0,2},{3,1} };
-	cv::Mat m2(2, 2, CV_64FC1,_m2);
-	m2 += 1;
-	m2 /= 4;
-	m2 *= 256;
-
-	double _m4[4][4] = { {0,8,2,10},{12,4,14,6},{3,11,1,9},{15,7,13,5} };
-	cv::Mat m4(4, 4, CV_64FC1, _m4);
-	m4 += 1;
-	m4 /= 16;
-	m4 *= 256;
-
-	double _m8[8][8] = { {0,48,12,60,3,51,15,63},{32,16,44,28,35,19,47,31},{8,56,4,52,11,59,7,55},{40,24,36,20,43,27,39,23},{2,50,14,62,1,49,13,61},{34,18,46,30,33,17,45,29},{10,58,6,54,9,57,5,53},{42,26,38,22,41,25,37,21} };
-	cv::Mat m8(8, 8, CV_64FC1, _m8);
-	m8 += 1;
-	m8 /= 64;
-	m8 *= 256;
-
 	cv::Mat m;
-	if (kernelsize == 2) {
-		m = m2.clone();
-	}else if(kernelsize == 4){
-		m = m4.clone();
-	}
-	else if (kernelsize == 8) {
-		m = m8.clone();
+	if(isInteger(std::log2(kernelsize))) {
+		m = MakeThresholdMap2(kernelsize,true);
 	}
 	else {
-		; //å„Ç≈çÏê¨
+		;
 	}
 
 	for (int i = 0; i < src.rows; ++i)
@@ -48,6 +28,31 @@ cv::Mat _bayer(cv::Mat src, int kernelsize) {
 				drow[j] = 0;
 			}
 		}
+	}
+	return dst;
+}
+
+cv::Mat MakeThresholdMap2(int kernelsize, bool isstart) {
+	cv::Mat dst;
+	if (kernelsize == 2) {
+		dst = cv::Mat(2, 2, CV_64FC1);
+		dst.at<double>(0, 0) = 0;
+		dst.at<double>(0, 1) = 2;
+		dst.at<double>(1, 0) = 3;
+		dst.at<double>(1, 1) = 1;
+	}
+	else {
+		cv::Mat temp;
+		cv::Mat halfx4 = MakeThresholdMap2(kernelsize / 2, false) * 4;
+		cv::vconcat(halfx4, halfx4 + 3, dst);
+		cv::vconcat(halfx4 + 2, halfx4 + 1, temp);
+		cv::hconcat(dst, temp, dst);
+	}
+
+	if (isstart) {
+		dst += 1;
+		dst /= (kernelsize * kernelsize);
+		dst *= 256;
 	}
 	return dst;
 }
