@@ -37,3 +37,7 @@ cv::Mat mat_clump(cv::Mat src) {
 	}
 	return dst;
 }
+
+bool isInteger(double x) {
+	return std::floor(x) == x;
+}
