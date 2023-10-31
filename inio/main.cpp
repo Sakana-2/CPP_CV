@@ -20,7 +20,7 @@
 //TODO: 位相的データ解析（Topological Data Analysis）を使って線の認識
 
 /*
-TODO: ハフ変換の続き、scharrの実装、スクリーントーンの実装（ディザリング、疑似濃淡）、脱色、レイヤー機能の作成、画質の問題、並列化
+TODO: ハフ変換の続き、脱色、レイヤー機能の作成、画質の問題、並列化
 */
 
 void Inio::load(std::string path) {
