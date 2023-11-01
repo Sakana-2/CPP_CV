@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>429</height>
+    <height>4095</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -105,6 +105,126 @@
              <rect>
               <x>80</x>
               <y>60</y>
+              <width>42</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="minimum">
+             <number>-255</number>
+            </property>
+            <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="LUBox">
+           <property name="title">
+            <string>ラプラシアン鮮鋭化</string>
+           </property>
+           <widget class="QLabel" name="label_23">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>81</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>BlockSize</string>
+            </property>
+           </widget>
+           <widget class="QSpinBox" name="LUBlockSize">
+            <property name="geometry">
+             <rect>
+              <x>80</x>
+              <y>30</y>
+              <width>42</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="minimum">
+             <number>3</number>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="LUExe">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>120</y>
+              <width>75</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>実行</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="LUProcessing">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>160</y>
+              <width>49</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>処理中</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_24">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>51</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Amount</string>
+            </property>
+           </widget>
+           <widget class="QDoubleSpinBox" name="LUAmount">
+            <property name="geometry">
+             <rect>
+              <x>80</x>
+              <y>60</y>
+              <width>62</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_25">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>90</y>
+              <width>71</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Adjustment</string>
+            </property>
+           </widget>
+           <widget class="QSpinBox" name="LUAdjustment">
+            <property name="geometry">
+             <rect>
+              <x>80</x>
+              <y>90</y>
               <width>42</width>
               <height>22</height>
              </rect>
@@ -1038,6 +1158,85 @@
            </widget>
           </widget>
          </item>
+         <item>
+          <widget class="QGroupBox" name="ADBox">
+           <property name="title">
+            <string>配列ディザリング</string>
+           </property>
+           <widget class="QLabel" name="label_26">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>81</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>階調数</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="ADExe">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>75</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>実行</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="ADProcessing">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>90</y>
+              <width>49</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>処理中</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="ADGrad">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>30</y>
+              <width>68</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <item>
+             <property name="text">
+              <string>4</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>16</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>64</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>256</string>
+             </property>
+            </item>
+           </widget>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
@@ -1113,8 +1312,10 @@
       <string>鮮鋭化</string>
      </property>
      <addaction name="MeanUsm"/>
+     <addaction name="LaplUsm"/>
     </widget>
     <addaction name="menu_6"/>
+    <addaction name="dithering"/>
    </widget>
    <widget class="QMenu" name="menu_7">
     <property name="title">
@@ -1300,8 +1501,24 @@
    </property>
   </action>
   <action name="Reset">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>全ての変更を元に戻す</string>
+   </property>
+  </action>
+  <action name="LaplUsm">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>ラプラシアン鮮鋭化</string>
+   </property>
+  </action>
+  <action name="dithering">
+   <property name="text">
+    <string>ディザリング</string>
    </property>
   </action>
  </widget>
