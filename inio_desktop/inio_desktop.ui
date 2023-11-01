@@ -1159,9 +1159,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="ADBox">
+          <widget class="QGroupBox" name="BDBox">
            <property name="title">
-            <string>配列ディザリング</string>
+            <string>ベイヤーディザリング</string>
            </property>
            <widget class="QLabel" name="label_26">
             <property name="geometry">
@@ -1176,7 +1176,7 @@
              <string>階調数</string>
             </property>
            </widget>
-           <widget class="QPushButton" name="ADExe">
+           <widget class="QPushButton" name="BDExe">
             <property name="geometry">
              <rect>
               <x>10</x>
@@ -1189,7 +1189,7 @@
              <string>実行</string>
             </property>
            </widget>
-           <widget class="QLabel" name="ADProcessing">
+           <widget class="QLabel" name="BDProcessing">
             <property name="enabled">
              <bool>true</bool>
             </property>
@@ -1205,7 +1205,7 @@
              <string>処理中</string>
             </property>
            </widget>
-           <widget class="QComboBox" name="ADGrad">
+           <widget class="QComboBox" name="BDGrad">
             <property name="geometry">
              <rect>
               <x>50</x>
@@ -1315,7 +1315,7 @@
      <addaction name="LaplUsm"/>
     </widget>
     <addaction name="menu_6"/>
-    <addaction name="dithering"/>
+    <addaction name="BDither"/>
    </widget>
    <widget class="QMenu" name="menu_7">
     <property name="title">
@@ -1516,7 +1516,7 @@
     <string>ラプラシアン鮮鋭化</string>
    </property>
   </action>
-  <action name="dithering">
+  <action name="BDither">
    <property name="text">
     <string>ディザリング</string>
    </property>

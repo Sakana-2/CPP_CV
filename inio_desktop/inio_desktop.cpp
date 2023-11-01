@@ -24,6 +24,7 @@ inio_desktop::inio_desktop(QWidget *parent)
 	ui.ATBox->hide();
 	ui.INBox->hide();
 	ui.LUBox->hide();
+	ui.BDBox->hide();
 	ui.core_2->hide();
 
 	QPalette pal = palette();

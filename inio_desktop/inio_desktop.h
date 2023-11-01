@@ -50,6 +50,8 @@ private slots:
 	void on_MUExe_clicked();
 	void on_LaplUsm_triggered();
 	void on_LUExe_clicked();
+	void on_BDither_triggered();
+	void on_BDExe_clicked();
 
 private:
 	Ui::inio_desktopClass ui;
