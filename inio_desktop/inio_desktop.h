@@ -48,6 +48,8 @@ private slots:
 	void on_THExe_clicked();
 	void on_MeanUsm_triggered();
 	void on_MUExe_clicked();
+	void on_LaplUsm_triggered();
+	void on_LUExe_clicked();
 
 private:
 	Ui::inio_desktopClass ui;
