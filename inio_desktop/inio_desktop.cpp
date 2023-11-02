@@ -69,11 +69,11 @@ void inio_desktop::on_Open_triggered() {
 	img.load(filename.toLocal8Bit().toStdString());
 	setWindowTitle(filename);
 	_pixmap = mat2qpixmap(img.get());
-	reload();
 	ui.alert->hide();
 	ui.core_2->show();
 	actionsEnabled();
 	PropBoxIncubator();
+	reload();
 }
 
 void inio_desktop::on_Save_triggered() {
