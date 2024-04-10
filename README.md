@@ -1,6 +1,6 @@
 # Simple Photo Edditing App
 ![スクリーンショット](https://github.com/Sakana-2/CPP_CV/assets/45968398/fb43dffd-3054-43eb-b108-e20e0078eeb6)
-Studying Image information processing only using OpenCV Matrix
+Studying image processing only using OpenCV Matrix
 
 ## What this can do
 * median blur
